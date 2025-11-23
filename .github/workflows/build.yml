@@ -16,35 +16,28 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '8.0.x'  # ⬅️ تحديث لإصدار أحدث
         
-    - name: List project files
+    - name: Create proper project file
       run: |
-        echo "=== Project Structure ==="
-        ls -la
-        echo ""
-        echo "=== C# Files Found ==="
-        find . -name "*.cs" | wc -l
-        echo "C# files total"
-        
-    - name: Create project file
-      run: |
-        # إنشاء ملف .csproj باستخدام echo لتجنب مشاكل YAML
+        # إنشاء ملف .csproj بدون تكرار
         echo '<Project Sdk="Microsoft.NET.Sdk">' > WarRegions.csproj
         echo '  <PropertyGroup>' >> WarRegions.csproj
         echo '    <OutputType>Exe</OutputType>' >> WarRegions.csproj
-        echo '    <TargetFramework>net6.0</TargetFramework>' >> WarRegions.csproj
+        echo '    <TargetFramework>net8.0</TargetFramework>' >> WarRegions.csproj
+        echo '    <ImplicitUsings>enable</ImplicitUsings>' >> WarRegions.csproj
+        echo '    <Nullable>enable</Nullable>' >> WarRegions.csproj
         echo '  </PropertyGroup>' >> WarRegions.csproj
-        echo '  <ItemGroup>' >> WarRegions.csproj
-        echo '    <Compile Include="**/*.cs" />' >> WarRegions.csproj
-        echo '  </ItemGroup>' >> WarRegions.csproj
         echo '</Project>' >> WarRegions.csproj
         
-        echo "✅ Project file created:"
+        echo "✅ Project file created"
         cat WarRegions.csproj
         
     - name: Build project
       run: dotnet build --configuration Release
+      
+    - name: List built files
+      run: find bin/Release -type f | head -10
       
     - name: Upload build results
       uses: actions/upload-artifact@v4
