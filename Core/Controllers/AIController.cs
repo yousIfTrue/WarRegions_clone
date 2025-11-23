@@ -11,6 +11,7 @@ namespace WarRegions.Core.Controllers
         private BattleCalculator _battleCalculator;
         private TerrainManager _terrainManager;
         private Random _random;
+
         public AIController(GameState gameState, BattleCalculator battleCalculator, TerrainManager terrainManager)
         {
             _gameState = gameState;
@@ -18,13 +19,20 @@ namespace WarRegions.Core.Controllers
             _terrainManager = terrainManager;
             _random = new Random();
         }
-        // سيتم إضافة دوال AI هنا لاحقاً
+
         public void MakeAIMove(Player aiPlayer)
-            // منطق AI سيتم إضافته هنا
+        {
+            // منطق AI سيتم إضافته هنا لاحقاً
+        }
+
         private Army FindStrongestArmy(Player player)
-            // منطق العثور على أقوى جيش
+        {
             return null; // مؤقت
+        }
+
         private Region FindWeakestEnemyRegion(Player aiPlayer)
-            // منطق العثور على أضعف منطقة للعدو
+        {
+            return null; // مؤقت
+        }
     }
 }
