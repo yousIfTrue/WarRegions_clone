@@ -16,31 +16,27 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'  # ⬅️ تحديث لإصدار أحدث
+        dotnet-version: '8.0.x'
         
-    - name: Create proper project file
+    - name: Display project structure
       run: |
-        # إنشاء ملف .csproj بدون تكرار
-        echo '<Project Sdk="Microsoft.NET.Sdk">' > WarRegions.csproj
-        echo '  <PropertyGroup>' >> WarRegions.csproj
-        echo '    <OutputType>Exe</OutputType>' >> WarRegions.csproj
-        echo '    <TargetFramework>net8.0</TargetFramework>' >> WarRegions.csproj
-        echo '    <ImplicitUsings>enable</ImplicitUsings>' >> WarRegions.csproj
-        echo '    <Nullable>enable</Nullable>' >> WarRegions.csproj
-        echo '  </PropertyGroup>' >> WarRegions.csproj
-        echo '</Project>' >> WarRegions.csproj
+        echo "=== Solution Structure ==="
+        find . -name "*.sln" -o -name "*.csproj"
+        echo ""
+        echo "=== C# Files Count ==="
+        find . -name "*.cs" | wc -l
+        echo "C# files total"
         
-        echo "✅ Project file created"
-        cat WarRegions.csproj
-        
-    - name: Build project
-      run: dotnet build --configuration Release
+    - name: Build solution
+      run: dotnet build WarRegions.sln --configuration Release
       
-    - name: List built files
-      run: find bin/Release -type f | head -10
+    - name: List output files
+      run: find . -name "*.dll" -o -name "*.exe" | grep bin/Release | head -10
       
-    - name: Upload build results
+    - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: warregions-game
-        path: bin/Release/
+        path: |
+          CLI/bin/Release/
+          Core/bin/Release/
