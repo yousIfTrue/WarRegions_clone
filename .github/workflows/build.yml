@@ -18,25 +18,23 @@ jobs:
       with:
         dotnet-version: '8.0.x'
         
-    - name: Display project structure
+    - name: Verify namespace organization
       run: |
-        echo "=== Solution Structure ==="
-        find . -name "*.sln" -o -name "*.csproj"
+        echo "=== التحقق من Namespaces ==="
+        find . -name "*.cs" -exec grep -l "namespace WarRegions" {} \; | head -10
         echo ""
-        echo "=== C# Files Count ==="
-        find . -name "*.cs" | wc -l
-        echo "C# files total"
+        echo "=== عدد الملفات المنظمة ==="
+        find . -name "*.cs" -exec grep -l "namespace WarRegions" {} \; | wc -l
+        echo "ملف منظم"
         
     - name: Build solution
-      run: dotnet build WarRegions.sln --configuration Release
+      run: dotnet build WarRegions.sln --configuration Release --verbosity minimal
       
-    - name: List output files
-      run: find . -name "*.dll" -o -name "*.exe" | grep bin/Release | head -10
-      
-    - name: Upload build artifacts
+    - name: Upload build results
+      if: success()
       uses: actions/upload-artifact@v4
       with:
-        name: warregions-game
+        name: warregions-build
         path: |
-          CLI/bin/Release/
-          Core/bin/Release/
+          CLI/bin/Release/net8.0/
+          Core/bin/Release/net8.0/
