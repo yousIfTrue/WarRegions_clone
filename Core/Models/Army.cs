@@ -1,6 +1,9 @@
 using System;
+using WarRegions.Core.Models.Units;
 using System.Collections.Generic;
+using WarRegions.Core.Models.Units;
 using System.Linq;
+using WarRegions.Core.Models.Units;
 
 namespace WarRegions.Core.Models
 {
@@ -14,7 +17,7 @@ namespace WarRegions.Core.Models
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.Models
+    namespace WarRegions.Models
     {
         public class Army
         {
@@ -82,7 +85,7 @@ namespace WarRegions.Core.Models
                 // Leave current region
                 if (CurrentRegion != null)
                 {
-                    CurrentRegion.OccupyingArmy = null;
+                    CurrentRegion.OccupyingArmy = null!;
                 }
                 
                 // Enter new region

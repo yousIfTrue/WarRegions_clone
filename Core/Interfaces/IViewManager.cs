@@ -1,6 +1,9 @@
 using System;
+using WarRegions.Core.Models;
 using System.Collections.Generic;
+using WarRegions.Core.Models;
 using System.Linq;
+using WarRegions.Core.Models;
 
 namespace WarRegions.Core.Interfaces
 {
@@ -9,7 +12,7 @@ namespace WarRegions.Core.Interfaces
     // - Models/Region.cs
     // - Models/Army.cs
     
-    namespace WarRegionsClone.Interfaces
+    namespace WarRegions.Interfaces
     {
         public interface IViewManager
         {
@@ -225,3 +228,6 @@ namespace WarRegions.Core.Interfaces
             }
         }
     }}
+using WarRegions.Core.Models;
+using WarRegions.Core.Models;
+using WarRegions.Core.Models;

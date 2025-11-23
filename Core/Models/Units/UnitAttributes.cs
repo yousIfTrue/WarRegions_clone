@@ -9,7 +9,7 @@ namespace WarRegions.Core.Models.Units
     
     using System;
     
-    namespace WarRegionsClone.Models.Units
+    namespace WarRegions.Models.Units
     {
         public class UnitAttributes
         {

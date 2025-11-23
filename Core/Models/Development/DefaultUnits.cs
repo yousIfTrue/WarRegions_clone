@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace WarRegionsClone.Models.Development
+namespace WarRegions.Models.Development
 {
     public static class DefaultUnits
     {
@@ -282,4 +282,6 @@ namespace WarRegionsClone.Models.Development
             return catalog;
         }
     }
-}
+}using WarRegions.Core.Models.Units;
+using WarRegions.Core.Models.Units;
+using WarRegions.Core.Models.Units;

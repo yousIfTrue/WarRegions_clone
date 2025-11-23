@@ -13,7 +13,7 @@ namespace WarRegions.Core.Models.Units
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.Models.Units
+    namespace WarRegions.Models.Units
     {
         public class UnitDeck
         {
@@ -104,7 +104,7 @@ namespace WarRegions.Core.Models.Units
                 if (index < 0 || index >= Units.Count)
                 {
                     Console.WriteLine($"Invalid unit index: {index}");
-                    return null;
+                    return null!;
                 }
                 
                 var unit = Units[index];
@@ -138,7 +138,7 @@ namespace WarRegions.Core.Models.Units
             public UnitCard GetUnitAt(int index)
             {
                 if (index < 0 || index >= Units.Count)
-                    return null;
+                    return null!;
                     
                 return Units[index];
             }

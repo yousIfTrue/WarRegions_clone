@@ -13,7 +13,7 @@ namespace WarRegions.Core.Models.Units
     
     using System;
     
-    namespace WarRegionsClone.Models
+    namespace WarRegions.Models
     {
         public class UnitCard
         {

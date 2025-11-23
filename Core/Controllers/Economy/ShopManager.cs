@@ -16,7 +16,7 @@ namespace WarRegions.Core.Controllers.Economy
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.Controllers.Economy
+    namespace WarRegions.Controllers.Economy
     {
         public class ShopManager
         {

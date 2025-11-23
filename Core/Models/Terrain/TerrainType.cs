@@ -8,7 +8,7 @@ namespace WarRegions.Core.Models.Terrain
     // Dependencies:
     // - Units/MovementType.cs (for movement restrictions)
     
-    namespace WarRegionsClone.Models.Terrain
+    namespace WarRegions.Models.Terrain
     {
         public enum TerrainType
         {

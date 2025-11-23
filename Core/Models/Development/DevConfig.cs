@@ -3,7 +3,7 @@
 
 using System;
 
-namespace WarRegionsClone.Models.Development
+namespace WarRegions.Models.Development
 {
     public static class DevConfig
     {

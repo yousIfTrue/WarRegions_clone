@@ -7,7 +7,7 @@ namespace WarRegions.Core.Models.Units
     // Core/Models/Units/UnitRarity.cs
     // Dependencies: None - this is a basic enum
     
-    namespace WarRegionsClone.Models.Units
+    namespace WarRegions.Models.Units
     {
         public enum UnitRarity
         {

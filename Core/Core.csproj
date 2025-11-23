@@ -4,11 +4,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>WarRegions.Core</RootNamespace>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>  <!-- ⬅️ هذا يحل المشكلة! -->
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- تضمين جميع ملفات C# بشكل صريح -->
     <Compile Include="Models/**/*.cs" />
     <Compile Include="Controllers/**/*.cs" />
     <Compile Include="Interfaces/**/*.cs" />

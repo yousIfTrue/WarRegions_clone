@@ -15,7 +15,7 @@ namespace WarRegions.Core.Controllers
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.Controllers
+    namespace WarRegions.Controllers
     {
         public class TerrainManager
         {

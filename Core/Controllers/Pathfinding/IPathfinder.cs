@@ -11,7 +11,7 @@ namespace WarRegions.Core.Controllers.Pathfinding
     
     using System.Collections.Generic;
     
-    namespace WarRegionsClone.Controllers.Pathfinding
+    namespace WarRegions.Controllers.Pathfinding
     {
         public interface IPathfinder
         {

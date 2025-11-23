@@ -14,7 +14,7 @@ namespace WarRegions.CLI
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.CLI
+    namespace WarRegions.CLI
     {
         public class GameRenderer
         {

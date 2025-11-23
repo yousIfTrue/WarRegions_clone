@@ -1,6 +1,9 @@
 using System;
+using WarRegions.Core.Models;
 using System.Collections.Generic;
+using WarRegions.Core.Models;
 using System.Linq;
+using WarRegions.Core.Models;
 
 namespace WarRegions.Core.Controllers
 {
@@ -17,7 +20,7 @@ namespace WarRegions.Core.Controllers
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.Controllers
+    namespace WarRegions.Controllers
     {
         public class GameManager
         {

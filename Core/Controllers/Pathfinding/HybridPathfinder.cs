@@ -17,7 +17,7 @@ namespace WarRegions.Core.Controllers.Pathfinding
     using System.Diagnostics;
     using System.Linq;
     
-    namespace WarRegionsClone.Controllers.Pathfinding
+    namespace WarRegions.Controllers.Pathfinding
     {
         public class HybridPathfinder : IPathfinder
         {

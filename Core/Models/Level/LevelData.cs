@@ -12,7 +12,7 @@ namespace WarRegions.Core.Models.Level
     using System;
     using System.Collections.Generic;
     
-    namespace WarRegionsClone.Models.Level
+    namespace WarRegions.Models.Level
     {
         public class LevelData
         {

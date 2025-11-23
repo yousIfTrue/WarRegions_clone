@@ -11,7 +11,7 @@ namespace WarRegions.Core.Models.Terrain
     
     using System;
     
-    namespace WarRegionsClone.Models.Terrain
+    namespace WarRegions.Models.Terrain
     {
         public class TerrainTile
         {

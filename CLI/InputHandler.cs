@@ -12,7 +12,7 @@ namespace WarRegions.CLI
     using System;
     using System.Collections.Generic;
     
-    namespace WarRegionsClone.CLI
+    namespace WarRegions.CLI
     {
         public class InputHandler
         {

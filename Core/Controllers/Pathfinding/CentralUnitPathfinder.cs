@@ -14,7 +14,7 @@ namespace WarRegions.Core.Controllers.Pathfinding
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.Controllers.Pathfinding
+    namespace WarRegions.Controllers.Pathfinding
     {
         public class CentralUnitPathfinder : IPathfinder
         {
@@ -243,7 +243,7 @@ namespace WarRegions.Core.Controllers.Pathfinding
                                                   MovementType movementType, int maxCost = 100)
             {
                 var reachable = FindReachablePositions(startX, startY, movementType, maxCost);
-                TerrainTile nearest = null;
+                TerrainTile nearest = null!;
                 int minDistance = int.MaxValue;
                 
                 foreach (var (targetX, targetY) in targets)

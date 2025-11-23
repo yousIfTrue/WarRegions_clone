@@ -10,7 +10,7 @@ namespace WarRegions.Core.Models.Level
     
     using System;
     
-    namespace WarRegionsClone.Models.Level
+    namespace WarRegions.Models.Level
     {
         public class SpawnPoint
         {

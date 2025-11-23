@@ -11,7 +11,7 @@ namespace WarRegions.Core.Models.Economy
     
     using System;
     
-    namespace WarRegionsClone.Models.Economy
+    namespace WarRegions.Models.Economy
     {
         public class UpgradeCost
         {

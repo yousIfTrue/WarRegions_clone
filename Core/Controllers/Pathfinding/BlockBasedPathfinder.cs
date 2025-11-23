@@ -14,7 +14,7 @@ namespace WarRegions.Core.Controllers.Pathfinding
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.Controllers.Pathfinding
+    namespace WarRegions.Controllers.Pathfinding
     {
         public class BlockBasedPathfinder : IPathfinder
         {
@@ -130,7 +130,7 @@ namespace WarRegions.Core.Controllers.Pathfinding
             
             private BlockMarker FindNearestBlockMarker(int x, int y, int maxDistance)
             {
-                BlockMarker nearest = null;
+                BlockMarker nearest = null!;
                 double minDistance = double.MaxValue;
                 
                 foreach (var marker in _blockMarkers.Values)

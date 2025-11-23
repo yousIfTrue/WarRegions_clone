@@ -15,7 +15,7 @@ namespace WarRegions.Core.Controllers
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.Controllers
+    namespace WarRegions.Controllers
     {
         public class DeckManager
         {
@@ -206,7 +206,7 @@ namespace WarRegions.Core.Controllers
                 if (availableUnits.Count == 0)
                 {
                     Console.WriteLine("[DECK] No units available for deck recommendation");
-                    return null;
+                    return null!;
                 }
                 
                 var recommendedDeck = new UnitDeck($"Recommended {strategy} Deck");

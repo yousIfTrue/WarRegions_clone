@@ -14,7 +14,7 @@ namespace WarRegions.Core.Models.Units
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.Models.Units
+    namespace WarRegions.Models.Units
     {
         public class UnitInventory
         {

@@ -15,7 +15,7 @@ namespace WarRegions.Core.Models
     using System.Collections.Generic;
     using System.Linq;
     
-    namespace WarRegionsClone.Models
+    namespace WarRegions.Models
     {
         public class GameState
         {

@@ -17,7 +17,7 @@ namespace WarRegions.Core.Controllers
     using System.Linq;
     using System.Text.Json;
     
-    namespace WarRegionsClone.Controllers
+    namespace WarRegions.Controllers
     {
         public class LevelManager
         {

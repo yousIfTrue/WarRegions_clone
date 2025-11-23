@@ -1,6 +1,15 @@
 using System;
+using WarRegions.Core.Models;
+using WarRegions.Core.Controllers;
+using WarRegions.Core.Models;
 using System.Collections.Generic;
+using WarRegions.Core.Models;
+using WarRegions.Core.Controllers;
+using WarRegions.Core.Models;
 using System.Linq;
+using WarRegions.Core.Models;
+using WarRegions.Core.Controllers;
+using WarRegions.Core.Models;
 
 namespace WarRegions.CLI
 {
@@ -15,7 +24,7 @@ namespace WarRegions.CLI
     using System;
     using System.Threading;
     
-    namespace WarRegionsClone.CLI
+    namespace WarRegions.CLI
     {
         class Program
         {

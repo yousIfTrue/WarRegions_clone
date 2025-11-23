@@ -1,6 +1,9 @@
 using System;
+using WarRegions.Core.Models.Terrain;
 using System.Collections.Generic;
+using WarRegions.Core.Models.Terrain;
 using System.Linq;
+using WarRegions.Core.Models.Terrain;
 
 namespace WarRegions.Core.Models
 {
@@ -13,7 +16,7 @@ namespace WarRegions.Core.Models
     using System;
     using System.Collections.Generic;
     
-    namespace WarRegionsClone.Models
+    namespace WarRegions.Models
     {
         public class Region
         {
