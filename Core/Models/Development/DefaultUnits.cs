@@ -6,6 +6,7 @@
 // - Units/UnitRarity.cs
 
 using System.Collections.Generic;
+using WarRegions.Core.Models.Units;
 
 namespace WarRegions.Models.Development
 {
@@ -282,6 +283,3 @@ namespace WarRegions.Models.Development
             return catalog;
         }
     }
-}using WarRegions.Core.Models.Units;
-using WarRegions.Core.Models.Units;
-using WarRegions.Core.Models.Units;
