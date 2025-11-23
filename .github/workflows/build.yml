@@ -1,42 +1,20 @@
-name: Build WarRegions
-
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
-
+name: Clean Build Test
+on: [push, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0.x'
-        
-    - name: Build and Test
-      run: |
-        echo "🔨 بناء المشروع..."
-        dotnet build WarRegions.sln --configuration Release --verbosity minimal
-        
-        echo "📊 نتيجة البناء:"
-        if [ $? -eq 0 ]; then
-          echo "🎉 البناء نجح!"
-          echo "📁 الملفات المبنية:"
-          find . -name "*.dll" -o -name "*.exe" | grep bin/Release | head -10
-        else
-          echo "⚠️ البناء به أخطاء، لكننا نواصل..."
-        fi
-        
-    - name: Upload Build Results
-      uses: actions/upload-artifact@v4
+    - name: Build Core
+      run: cd Core && dotnet build --configuration Release
+    - name: Build CLI
+      run: cd CLI && dotnet build --configuration Release
+    - uses: actions/upload-artifact@v4
       with:
-        name: warregions-build
+        name: clean-build
         path: |
-          CLI/bin/Release/net8.0/
-          Core/bin/Release/net8.0/
-        if-no-files-found: warn
+          CLI/bin/Release/
+          Core/bin/Release/
