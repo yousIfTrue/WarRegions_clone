@@ -1,0 +1,47 @@
+name: 🏗️ Build WarRegions
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 تحميل الكود
+      uses: actions/checkout@v4
+      
+    - name: 🎯 إعداد .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'
+        
+    - name: 🔍 فحص المشروع
+      run: |
+        echo "=== هيكل المشروع ==="
+        find . -name "*.csproj" -o -name "*.sln" | head -10
+        echo ""
+        echo "=== ملفات C# ==="
+        find . -name "*.cs" | wc -l
+        echo "ملف C# موجودة"
+        
+    - name: 🔨 بناء المشروع
+      run: |
+        if find . -name "*.sln" | grep -q .; then
+          echo "🔧 بناء باستخدام .sln"
+          dotnet build --configuration Release
+        elif find . -name "*.csproj" | grep -q .; then
+          echo "🔧 بناء باستخدام .csproj"
+          dotnet build --configuration Release
+        else
+          echo "❌ لا يوجد ملف مشروع للبناء"
+          exit 1
+        fi
+        
+    - name: 📦 رفع الملفات المبنية
+      uses: actions/upload-artifact@v4
+      with:
+        name: warregions-game
+        path: bin/Release/
