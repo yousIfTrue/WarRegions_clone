@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-    namespace WarRegions.Models.Units
+    namespace WarRegions.Core.Models.Units
     {
             // Core/Models/Units/MovementType.cs
     // Dependencies:

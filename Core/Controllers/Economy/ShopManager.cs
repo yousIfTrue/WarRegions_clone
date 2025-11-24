@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WarRegions.Core.Models;           // للـ Player, GameState
+using WarRegions.Core.Models.Economy;  // للـ Currency, Transaction
+// namespace: WarRegions.Core.Controllers.Economy
 
 
     
-    namespace WarRegions.Controllers.Economy
+    namespace WarRegions.Core.Controllers.Economy
     {
         // Core/Controllers/Economy/ShopManager.cs
     // Dependencies:

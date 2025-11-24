@@ -1,8 +1,14 @@
-using System;
+
+    
+    using System;
 using System.Collections.Generic;
 using System.Linq;
-    
-    namespace WarRegions.Controllers
+using WarRegions.Core.Models;           // للموديلز الأساسية
+using WarRegions.Core.Models.Terrain;  // للتضاريس
+using WarRegions.Core.Models.Units;    // للوحدات
+// namespace: WarRegions.Core.Controllers
+
+    namespace WarRegions.Core.Controllers
     {
             // Core/Controllers/TerrainManager.cs
     // Dependencies:

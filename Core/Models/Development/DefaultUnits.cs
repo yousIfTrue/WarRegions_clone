@@ -1,5 +1,9 @@
+/*using System.Collections.Generic;
+using WarRegions.Core.Models.Units;*/
+
+using System;
 using System.Collections.Generic;
-using WarRegions.Core.Models.Units;
+// namespace: WarRegions.Core.Models.Development
 
 namespace WarRegions.Core.Models.Development
 {

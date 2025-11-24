@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using WarRegions.Core.Models;  // ✅ للـ Player
-using WarRegions.Models;       // ✅ للـ GameState
-
+using WarRegions.Core.Models;           // للـ Player, GameState
+using WarRegions.Core.Models.Economy;  // للـ Currency, Transaction
+// namespace: WarRegions.Core.Controllers.Economy
 
     // Core/Controllers/Economy/EconomyManager.cs
     // Dependencies:
@@ -13,7 +13,7 @@ using WarRegions.Models;       // ✅ للـ GameState
     // - Models/GameState.cs
     // - Development/DevConfig.cs
 
-    namespace WarRegionsClone.Controllers.Economy
+    namespace WarRegions.Core.Controllers.Economy
     {
         public class EconomyManager
         {

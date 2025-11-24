@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-    namespace WarRegions.Models.Terrain
+    namespace WarRegions.Core.Models.Terrain
     {
             // Core/Models/Terrain/TerrainType.cs
     // Dependencies:

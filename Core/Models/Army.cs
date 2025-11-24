@@ -1,5 +1,10 @@
+/*using System.Collections.Generic;
+using WarRegions.Core.Models.Units;*/
+
+using System;
 using System.Collections.Generic;
-using WarRegions.Core.Models.Units;
+using System.Linq;
+// namespace: WarRegions.Core.Models
 
 namespace WarRegions.Core.Models
 {

@@ -1,8 +1,13 @@
+/*using System;
+using System.Collections.Generic;
+using System.Linq;*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+// namespace: WarRegions.Core.Models
 
-    namespace WarRegions.Models
+    namespace WarRegions.Core.Models
     {
             // GameState.cs
     // Dependencies:

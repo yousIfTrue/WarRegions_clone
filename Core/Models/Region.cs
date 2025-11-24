@@ -1,10 +1,15 @@
-using System;
+/*using System;
 using WarRegions.Core.Models.Terrain;
 using WarRegions.Core.Models;
 using System.Collections.Generic;
+using System.Linq;*/ 
+
+    using System;
+using System.Collections.Generic;
 using System.Linq;
-    
-    namespace WarRegions.Models
+// namespace: WarRegions.Core.Models
+
+    namespace WarRegions.Core.Models
     {
             // Region.cs
     // Dependencies:

@@ -1,14 +1,22 @@
 //the old code is down
 
-using System;
+/*using System; 
 using System.Collections.Generic;
 using System.Linq;
 using WarRegionsClone.Models;
-//using WarRegionsClone.Models.Development;
-//using WarRegionsClone.Models.Units;
-using WarRegions.Core.Models.Development;
+using WarRegionsClone.Models.Development;
+using WarRegionsClone.Models.Units;
+using WarRegions.Core.Models.Development;*/
 
-namespace WarRegionsClone.Controllers
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using WarRegions.Core.Models;           // للموديلز الأساسية
+using WarRegions.Core.Models.Terrain;  // للتضاريس
+using WarRegions.Core.Models.Units;    // للوحدات
+// namespace: WarRegions.Core.Controllers
+
+namespace WarRegions.Core.Controllers
 {
     public class BattleCalculator
     {
