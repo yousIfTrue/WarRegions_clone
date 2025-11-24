@@ -1,6 +1,7 @@
 //the old code is down
 
 // Core/Models/Level/LevelData.cs
+using WarRegions.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;  // ⚠️ هذا كان مفقوداً في الكود الأصلي
