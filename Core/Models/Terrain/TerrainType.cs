@@ -2,14 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Models.Terrain
-{
-    // Core/Models/Terrain/TerrainType.cs
-    // Dependencies:
-    // - Units/MovementType.cs (for movement restrictions)
-    
     namespace WarRegions.Models.Terrain
     {
+            // Core/Models/Terrain/TerrainType.cs
+    // Dependencies:
+    // - Units/MovementType.cs (for movement restrictions)
         public enum TerrainType
         {
             Plains,      // Open fields - normal movement
@@ -199,4 +196,4 @@ namespace WarRegions.Core.Models.Terrain
                 }
             }
         }
-    }}
+    }

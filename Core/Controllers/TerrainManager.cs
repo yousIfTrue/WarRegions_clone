@@ -1,22 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace WarRegions.Core.Controllers
-{
-    // Core/Controllers/TerrainManager.cs
+    
+    namespace WarRegions.Controllers
+    {
+            // Core/Controllers/TerrainManager.cs
     // Dependencies:
     // - Models/Terrain/TerrainType.cs
     // - Models/Terrain/TerrainTile.cs
     // - Models/Region.cs
     // - Models/Units/MovementType.cs
-    
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    namespace WarRegions.Controllers
-    {
         public class TerrainManager
         {
             private List<TerrainTile> _terrainTiles;
@@ -357,4 +350,4 @@ namespace WarRegions.Core.Controllers
                 Console.WriteLine("[TERRAIN] Map cleared");
             }
         }
-    }}
+    }

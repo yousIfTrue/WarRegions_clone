@@ -2,21 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Models
-{
-    // GameState.cs
+    namespace WarRegions.Models
+    {
+            // GameState.cs
     // Dependencies:
     // - Player.cs (for Players list)
     // - Region.cs (for Regions list)
     // - Army.cs (for Armies list)
     // - Level/LevelData.cs (for CurrentLevel)
-    
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    namespace WarRegions.Models
-    {
         public class GameState
         {
             public string GameId { get; set; }
@@ -232,4 +225,4 @@ namespace WarRegions.Core.Models
             Battle,
             GameOver
         }
-    }}
+    }

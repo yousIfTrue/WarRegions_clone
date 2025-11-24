@@ -1,13 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace WarRegions.Core.Models.Economy
-{
-    // Core/Models/Economy/Currency.cs
-    // Dependencies: None - basic economy class
-    
-    using System;
     
     namespace WarRegions.Models.Economy
     {
@@ -210,4 +203,4 @@ namespace WarRegions.Core.Models.Economy
                 Message = string.Empty;
             }
         }
-    }}
+    }

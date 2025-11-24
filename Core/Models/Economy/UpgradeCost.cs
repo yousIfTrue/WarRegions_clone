@@ -1,18 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace WarRegions.Core.Models.Economy
-{
-    // Core/Models/Economy/UpgradeCost.cs
-    // Dependencies:
-    // - Units/UnitRarity.cs (for rarity-based costs)
-    // - Currency.cs (for currency calculations)
-    
-    using System;
     
     namespace WarRegions.Models.Economy
     {
+            // Core/Models/Economy/UpgradeCost.cs
+    // Dependencies:
+    // - Units/UnitRarity.cs (for rarity-based costs)
+    // - Currency.cs (for currency calculations)
         public class UpgradeCost
         {
             public string UpgradeId { get; set; }
@@ -248,8 +243,7 @@ namespace WarRegions.Core.Models.Economy
             
             public int GetInstantCompleteCost()
             {
-                if (!CanInstantComplete)
-                    return 0;
+                if (!CanInstantComplete) return 0;
                     
                 int baseCost = RequiredTimeMinutes / 10; // 1 gold per 10 minutes
                 return Math.Max(1, baseCost);
@@ -323,4 +317,4 @@ namespace WarRegions.Core.Models.Economy
             Armor,
             Special
         }
-    }}
+    }

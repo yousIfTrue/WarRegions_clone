@@ -2,19 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Models.Units
-{
+    namespace WarRegions.Core.Models.Units
+    {
     // Core/Models/Units/UnitDeck.cs
     // Dependencies:
     // - UnitCard.cs (for Units list)
     // - UnitRarity.cs (for rarity restrictions)
-    
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    namespace WarRegions.Models.Units
-    {
+
         public class UnitDeck
         {
             public string DeckId { get; set; }
@@ -261,4 +255,4 @@ namespace WarRegions.Core.Models.Units
                 return $"{DeckName} - {Units.Count}/{MaxDeckSize} units - {TotalAttack} ATK";
             }
         }
-    }}
+    }

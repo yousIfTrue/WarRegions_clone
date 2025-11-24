@@ -2,22 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Controllers.Economy
-{
-    // Core/Controllers/Economy/ShopManager.cs
+
+    
+    namespace WarRegions.Controllers.Economy
+    {
+        // Core/Controllers/Economy/ShopManager.cs
     // Dependencies:
     // - Models/Economy/ShopItem.cs
     // - Models/Economy/Currency.cs
     // - Models/Player.cs
     // - Models/Units/UnitCard.cs
     // - Development/DevConfig.cs
-    
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    namespace WarRegions.Controllers.Economy
-    {
+
         public class ShopManager
         {
             private List<ShopItem> _availableItems;
@@ -294,4 +290,4 @@ namespace WarRegions.Core.Controllers.Economy
                 }
             }
         }
-    }}
+    }

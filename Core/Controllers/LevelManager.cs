@@ -1,24 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace WarRegions.Core.Controllers
-{
-    // Core/Controllers/LevelManager.cs
-    // Dependencies:
-    // - Models/Level/LevelData.cs
-    // - Models/Level/SpawnPoint.cs
-    // - Models/GameState.cs
-    // - Models/Player.cs
-    
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Text.Json;
-    
+
     namespace WarRegions.Controllers
     {
+            // Core/Controllers/LevelManager.cs
+    // Dependencies:
+    // - Models/Level/LevelData.cs
+    // - Models/Level/SpawnPoint.cs
+    // - Models/GameState.cs
+    // - Models/Player.cs
+
         public class LevelManager
         {
             private List<LevelData> _loadedLevels;
@@ -370,4 +364,4 @@ namespace WarRegions.Core.Controllers
                 Console.WriteLine("[LEVEL] Level cache cleared");
             }
         }
-    }}
+    }

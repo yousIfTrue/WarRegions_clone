@@ -1,17 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace WarRegions.Core.Models.Level
-{
-    // Core/Models/Level/SpawnPoint.cs
-    // Dependencies:
-    // - Units/UnitCard.cs (for unit creation)
-    
-    using System;
     
     namespace WarRegions.Models.Level
     {
+            // Core/Models/Level/SpawnPoint.cs
+    // Dependencies:
+    // - Units/UnitCard.cs (for unit creation)
         public class SpawnPoint
         {
             public string SpawnId { get; set; }
@@ -236,4 +231,4 @@ namespace WarRegions.Core.Models.Level
                 return $"{UnitType}@({X},{Y})";
             }
         }
-    }}
+    }

@@ -7,4 +7,5 @@ using WarRegions.Core.Models;
 
 namespace WarRegions.Core.Interfaces
 {
+    
 }

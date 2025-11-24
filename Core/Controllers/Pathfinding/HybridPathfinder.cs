@@ -2,23 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Controllers.Pathfinding
-{
-    // Core/Controllers/Pathfinding/HybridPathfinder.cs
+    namespace WarRegions.Controllers.Pathfinding
+    {
+            // Core/Controllers/Pathfinding/HybridPathfinder.cs
     // Dependencies:
     // - IPathfinder.cs
     // - Models/Terrain/TerrainTile.cs
     // - Models/Units/MovementType.cs
     // - CentralUnitPathfinder.cs
     // - BlockBasedPathfinder.cs
-    
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-    
-    namespace WarRegions.Controllers.Pathfinding
-    {
         public class HybridPathfinder : IPathfinder
         {
             private CentralUnitPathfinder _centralPathfinder;
@@ -312,4 +304,4 @@ namespace WarRegions.Core.Controllers.Pathfinding
                 Console.WriteLine("[PATHFINDING] Performance statistics reset");
             }
         }
-    }}
+    }

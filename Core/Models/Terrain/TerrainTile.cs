@@ -2,17 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Models.Terrain
-{
-    // Core/Models/Terrain/TerrainTile.cs
+    namespace WarRegions.Models.Terrain
+    {
+            // Core/Models/Terrain/TerrainTile.cs
     // Dependencies:
     // - TerrainType.cs (for Terrain property)
     // - Region.cs (for linked region)
-    
-    using System;
-    
-    namespace WarRegions.Models.Terrain
-    {
         public class TerrainTile
         {
             public string TileId { get; set; }
@@ -263,4 +258,4 @@ namespace WarRegions.Core.Models.Terrain
                 return $"{Terrain.GetEmoji()} ({X},{Y})";
             }
         }
-    }}
+    }

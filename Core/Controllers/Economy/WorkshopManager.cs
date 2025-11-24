@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace WarRegions.Core.Controllers.Economy
-{
-    // Core/Controllers/Economy/WorkshopManager.cs
+    
+    namespace WarRegions.Controllers.Economy
+    {
+        // Core/Controllers/Economy/WorkshopManager.cs
     // Dependencies:
     // - Models/Economy/UpgradeCost.cs
     // - Models/Economy/Currency.cs
@@ -13,12 +13,6 @@ namespace WarRegions.Core.Controllers.Economy
     // - Models/Units/UnitRarity.cs
     // - Development/DevConfig.cs
     
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    namespace WarRegions.Controllers.Economy
-    {
         public class WorkshopManager
         {
             private List<UpgradeCost> _availableUpgrades;
@@ -455,4 +449,4 @@ namespace WarRegions.Core.Controllers.Economy
                 Message = string.Empty;
             }
         }
-    }}
+    }

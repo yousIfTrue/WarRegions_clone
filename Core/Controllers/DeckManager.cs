@@ -10,10 +10,7 @@ namespace WarRegions.Core.Controllers
     // - Models/Units/UnitInventory.cs
     // - Models/Player.cs
     // - Models/Units/UnitCard.cs
-    
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+
     
     namespace WarRegions.Controllers
     {
@@ -436,4 +433,5 @@ namespace WarRegions.Core.Controllers
                 Console.WriteLine($"[DECK] Saved deck as template: {templateName}");
             }
         }
-    }}
+    }
+}

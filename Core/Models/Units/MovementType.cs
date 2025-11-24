@@ -2,14 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Models.Units
-{
-    // Core/Models/Units/MovementType.cs
-    // Dependencies:
-    // - Terrain/TerrainType.cs (for terrain interaction)
-    
     namespace WarRegions.Models.Units
     {
+            // Core/Models/Units/MovementType.cs
+    // Dependencies:
+    // - Terrain/TerrainType.cs (for terrain interaction)
         public enum MovementType
         {
             Infantry,    // Ground units - good in forests
@@ -160,4 +157,4 @@ namespace WarRegions.Core.Models.Units
                 return movementType.ToString();
             }
         }
-    }}
+    }

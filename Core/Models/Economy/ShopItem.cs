@@ -2,17 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Models.Economy
-{
-    // Core/Models/Economy/ShopItem.cs
+    namespace WarRegions.Models.Economy
+    {
+            // Core/Models/Economy/ShopItem.cs
     // Dependencies:
     // - Units/UnitCard.cs (for UnitCard property)
     // - Currency.cs (for pricing)
-    
-    using System;
-    
-    namespace WarRegions.Models.Economy
-    {
         public class ShopItem
         {
             public string ItemId { get; set; }
@@ -254,4 +249,4 @@ namespace WarRegions.Core.Models.Economy
             Upgrade,
             Special
         }
-    }}
+    }

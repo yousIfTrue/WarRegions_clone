@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Models.Units
-{
+    namespace WarRegions.Core.Models.Units
+    {
     // UnitCard.cs
     // Dependencies:
     // - UnitAttributes.cs (for Stats property)
@@ -11,10 +11,6 @@ namespace WarRegions.Core.Models.Units
     // - UnitRarity.cs (for Rarity property)
     // - TerrainType.cs (for terrain effects)
     
-    using System;
-    
-    namespace WarRegions.Models
-    {
         public class UnitCard
         {
             public string UnitId { get; set; }
@@ -121,4 +117,4 @@ namespace WarRegions.Core.Models.Units
                 return $"{UnitName} (Lvl {Level}) - {Rarity} - HP: {CurrentHealth}/{Stats.MaxHealth}";
             }
         }
-    }}
+    }

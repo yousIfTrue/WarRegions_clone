@@ -20,10 +20,6 @@ namespace WarRegions.CLI
     // - Core/Models/Army.cs
     // - Core/Models/Units/UnitCard.cs
     
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
     namespace WarRegions.CLI
     {
         public class CLIViewManager : IViewManager
@@ -283,4 +279,5 @@ namespace WarRegions.CLI
                 Console.WriteLine($"  Resources: {Currency.GetPlayerBalance(player)}");
             }
         }
-    }}
+    }
+}

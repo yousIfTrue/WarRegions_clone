@@ -1,18 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace WarRegions.Core.Models.Economy
-{
-    // Core/Models/Economy/Transaction.cs
-    // Dependencies:
-    // - Currency.cs (for currency amounts)
-    // - Player.cs (for player reference)
-    
-    using System;
     
     namespace WarRegions.Models.Economy
     {
+            // Core/Models/Economy/Transaction.cs
+    // Dependencies:
+    // - Currency.cs (for currency amounts)
+    // - Player.cs (for player reference)
         public class Transaction
         {
             public string TransactionId { get; set; }
@@ -311,4 +306,4 @@ namespace WarRegions.Core.Models.Economy
                 """;
             }
         }
-    }}
+    }

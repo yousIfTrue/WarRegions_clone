@@ -1,21 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace WarRegions.Core.Controllers.Pathfinding
-{
-    // Core/Controllers/Pathfinding/CentralUnitPathfinder.cs
+    
+    namespace WarRegions.Controllers.Pathfinding
+    {
+            // Core/Controllers/Pathfinding/CentralUnitPathfinder.cs
     // Dependencies:
     // - IPathfinder.cs
     // - Models/Terrain/TerrainTile.cs
     // - Models/Units/MovementType.cs
-    
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    namespace WarRegions.Controllers.Pathfinding
-    {
         public class CentralUnitPathfinder : IPathfinder
         {
             private TerrainManager _terrainManager;
@@ -263,4 +256,4 @@ namespace WarRegions.Core.Controllers.Pathfinding
                 return nearest;
             }
         }
-    }}
+    }

@@ -2,20 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Models.Units
-{
+    namespace WarRegions.Core.Models.Units
+    {
     // Core/Models/Units/UnitInventory.cs
     // Dependencies:
     // - UnitCard.cs (for AvailableUnits list)
     // - UnitDeck.cs (for Decks list)
     // - UnitRarity.cs (for rarity tracking)
-    
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    namespace WarRegions.Models.Units
-    {
+
         public class UnitInventory
         {
             public string InventoryId { get; set; }
@@ -261,4 +255,4 @@ namespace WarRegions.Core.Models.Units
                 return $"Inventory - {TotalUnits} units, {Decks.Count} decks, Active: {ActiveDeck?.DeckName}";
             }
         }
-    }}
+    }

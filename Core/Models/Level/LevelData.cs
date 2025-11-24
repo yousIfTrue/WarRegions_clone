@@ -1,19 +1,110 @@
+//the old code is down
+
+// Core/Models/Level/LevelData.cs
 using System;
+using System.Collections.Generic;
+using System.Linq;  // ⚠️ هذا كان مفقوداً في الكود الأصلي
+using WarRegionsClone.Controllers;  // لـ DevConfig
+using WarRegionsClone.Models.Development;  // لـ DevConfig
+
+namespace WarRegionsClone.Models.Level
+{
+    public partial class LevelData  // جعلها partial لسهولة التعديل
+    {
+        public class VictoryCondition
+        {
+            public string Type { get; set; } = "eliminate_all";
+            public string Target { get; set; } = "enemy_units";
+            public int RequiredCount { get; set; } = 0;
+            public int TimeLimit { get; set; } = 0;
+            
+            public VictoryCondition() { }
+            
+            public VictoryCondition(string type, string target = "enemy_units", int requiredCount = 0)
+            {
+                Type = type;
+                Target = target;
+                RequiredCount = requiredCount;
+            }
+            
+            public bool IsConditionMet(GameState gameState)
+            {
+                if (gameState?.CurrentPlayer == null) return false;
+                
+                switch (Type)
+                {
+                    case "eliminate_all":
+                        return CheckEliminateAll(gameState);
+                        
+                    case "capture_regions":
+                        return CheckCaptureRegions(gameState);
+                        
+                    case "survive_turns":
+                        return CheckSurviveTurns(gameState);
+                        
+                    case "destroy_specific":
+                        return CheckDestroySpecific(gameState);
+                        
+                    default:
+                        return false;
+                }
+            }
+            
+            private bool CheckEliminateAll(GameState gameState)
+            {
+                // التصحيح: استخدام اللاعب البشري (المفترض أنه الأول)
+                var humanPlayer = gameState.Players.FirstOrDefault();
+                if (humanPlayer == null) return false;
+                
+                var enemyArmies = gameState.Armies.Where(a => a.Owner != humanPlayer && a.Owner != null);
+                return !enemyArmies.Any(a => a.GetAliveUnitCount() > 0);
+            }
+            
+            private bool CheckCaptureRegions(GameState gameState)
+            {
+                var humanPlayer = gameState.Players.FirstOrDefault();
+                if (humanPlayer == null) return false;
+                
+                var playerRegions = gameState.Regions.Count(r => r.Owner == humanPlayer);
+                return playerRegions >= RequiredCount;
+            }
+            
+            private bool CheckSurviveTurns(GameState gameState)
+            {
+                return gameState.TurnNumber >= TimeLimit;
+            }
+            
+            private bool CheckDestroySpecific(GameState gameState)
+            {
+                // أثناء التطوير، نعيد true لتجنب تعطيل اللعبة
+                return DevConfig.DebugMode;
+            }
+            
+            public string GetDescription()
+            {
+                return Type switch
+                {
+                    "eliminate_all" => "Destroy all enemy units",
+                    "capture_regions" => $"Capture at least {RequiredCount} regions",
+                    "survive_turns" => $"Survive for {TimeLimit} turns",
+                    "destroy_specific" => "Destroy the enemy commander",
+                    _ => "Unknown victory condition"
+                };
+            }
+        }
+    }
+}
+
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Models.Level
-{
-    // Core/Models/Level/LevelData.cs
+    namespace WarRegions.Models.Level
+    {
+            // Core/Models/Level/LevelData.cs
     // Dependencies:
     // - SpawnPoint.cs (for PlayerSpawnPoints and EnemySpawnPoints)
     // - Terrain/TerrainType.cs (for map generation)
-    
-    using System;
-    using System.Collections.Generic;
-    
-    namespace WarRegions.Models.Level
-    {
         public class LevelData
         {
             public string LevelId { get; set; }
@@ -262,4 +353,5 @@ namespace WarRegions.Core.Models.Level
                 };
             }
         }
-    }}
+    }
+*/

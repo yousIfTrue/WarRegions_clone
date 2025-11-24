@@ -1,21 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace WarRegions.Core.Controllers.Pathfinding
-{
-    // Core/Controllers/Pathfinding/BlockBasedPathfinder.cs
+    
+    namespace WarRegions.Controllers.Pathfinding
+    {
+            // Core/Controllers/Pathfinding/BlockBasedPathfinder.cs
     // Dependencies:
     // - IPathfinder.cs
     // - Models/Terrain/TerrainTile.cs
     // - Models/Units/MovementType.cs
-    
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    namespace WarRegions.Controllers.Pathfinding
-    {
         public class BlockBasedPathfinder : IPathfinder
         {
             private TerrainManager _terrainManager;
@@ -419,4 +412,4 @@ namespace WarRegions.Core.Controllers.Pathfinding
             RiverPath,
             MountainPass
         }
-    }}
+    }

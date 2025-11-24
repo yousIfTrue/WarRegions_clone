@@ -1,16 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace WarRegions.Core.Models.Units
-{
-    // Core/Models/Units/UnitAttributes.cs
-    // Dependencies: None - this is a basic data structure
-    
-    using System;
     
     namespace WarRegions.Models.Units
     {
+        // Core/Models/Units/UnitAttributes.cs
+        // Dependencies: None - this is a basic data structure
         public class UnitAttributes
         {
             // Core combat stats
@@ -146,4 +141,4 @@ namespace WarRegions.Core.Models.Units
                 return $"{Attack}A/{Defense}D/{MaxHealth}HP";
             }
         }
-    }}
+    }

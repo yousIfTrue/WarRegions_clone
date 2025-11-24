@@ -2,13 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Models.Units
-{
+    namespace WarRegions.Core.Models.Units
+    {
     // Core/Models/Units/UnitRarity.cs
     // Dependencies: None - this is a basic enum
-    
-    namespace WarRegions.Models.Units
-    {
+
         public enum UnitRarity
         {
             Common,      // Basic units - easy to obtain
@@ -160,4 +158,4 @@ namespace WarRegions.Core.Models.Units
                 }
             }
         }
-    }}
+    }

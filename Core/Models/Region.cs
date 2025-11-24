@@ -2,19 +2,14 @@ using System;
 using WarRegions.Core.Models.Terrain;
 using System.Collections.Generic;
 using System.Linq;
-
-namespace WarRegions.Core.Models
-{
-    // Region.cs
+    
+    namespace WarRegions.Models
+    {
+            // Region.cs
     // Dependencies:
     // - Terrain/TerrainType.cs (for Terrain property)
     // - Army.cs (for OccupyingArmy property)
     // - Player.cs (for Owner property)
-    
-    using System;
-    using System.Collections.Generic;
-    namespace WarRegions.Models
-    {
         public class Region
         {
             public string RegionId { get; set; }
@@ -47,11 +42,13 @@ namespace WarRegions.Core.Models
                 MapColor = ConsoleColor.Gray;
             }
             public Region(string name, int x, int y, TerrainType terrain) : this()
+            {
                 RegionName = name;
                 X = x;
                 Y = y;
                 Terrain = terrain;
                 SetTerrainProperties();
+            }
             private void SetTerrainProperties()
                 switch (Terrain)
                 {
@@ -127,4 +124,4 @@ namespace WarRegions.Core.Models
                 string armyInfo = OccupyingArmy?.ToString() ?? "No army";
                 return $"{RegionName} ({X},{Y}) - {Terrain} - Owner: {ownerName} - {armyInfo}";
         }
-    }}
+    }

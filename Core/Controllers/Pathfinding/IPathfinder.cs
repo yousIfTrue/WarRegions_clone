@@ -2,17 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Controllers.Pathfinding
-{
-    // Core/Controllers/Pathfinding/IPathfinder.cs
+    namespace WarRegions.Controllers.Pathfinding
+    {
+            // Core/Controllers/Pathfinding/IPathfinder.cs
     // Dependencies:
     // - Models/Terrain/TerrainTile.cs
     // - Models/Units/MovementType.cs
-    
-    using System.Collections.Generic;
-    
-    namespace WarRegions.Controllers.Pathfinding
-    {
         public interface IPathfinder
         {
             /// <summary>
@@ -96,4 +91,4 @@ namespace WarRegions.Core.Controllers.Pathfinding
                 return $"Path found: {Path.Count} steps, {TotalCost} cost (Algorithm: {AlgorithmUsed}, Time: {ComputationTimeMs}ms)";
             }
         }
-    }}
+    }

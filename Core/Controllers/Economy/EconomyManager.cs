@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WarRegions.Core.Controllers.Economy
-{
+
     // Core/Controllers/Economy/EconomyManager.cs
     // Dependencies:
     // - Models/Economy/Currency.cs
@@ -11,11 +10,7 @@ namespace WarRegions.Core.Controllers.Economy
     // - Models/Player.cs
     // - Models/GameState.cs
     // - Development/DevConfig.cs
-    
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
+
     namespace WarRegonsClone.Controllers.Economy
     {
         public class EconomyManager
@@ -341,4 +336,4 @@ namespace WarRegions.Core.Controllers.Economy
                 Console.WriteLine($"[ECONOMY] Reset economy for {player.PlayerName}");
             }
         }
-    }}
+    }

@@ -10,10 +10,6 @@ namespace WarRegions.CLI
     // - Core/Models/Army.cs
     // - Core/Models/Terrain/TerrainType.cs
     
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    
     namespace WarRegions.CLI
     {
         public class GameRenderer
@@ -260,4 +256,5 @@ namespace WarRegions.CLI
                 Console.WriteLine("\n\n");
             }
         }
-    }}
+    }
+}
