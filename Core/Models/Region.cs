@@ -50,6 +50,7 @@ using System.Linq;
                 SetTerrainProperties();
             }
             private void SetTerrainProperties()
+            {
                 switch (Terrain)
                 {
                     case TerrainType.Plains:
@@ -67,61 +68,101 @@ using System.Linq;
                         MapColor = ConsoleColor.DarkGray;
                         DefenseBonus = 5;
                         IsPassable = false; // Mountains block movement
+                        break;
                     case TerrainType.Forest:
                         SilverProduction = 8;
                         GoldProduction = 2;
                         MapSymbol = '♣';
                         MapColor = ConsoleColor.DarkGreen;
                         DefenseBonus = 2;
+                        break;
                     case TerrainType.River:
                         SilverProduction = 6;
                         MapSymbol = '≈';
                         MapColor = ConsoleColor.Blue;
                         DefenseBonus = -1;
+                        break;
                     case TerrainType.Desert:
                         SilverProduction = 4;
                         GoldProduction = 0;
                         MapSymbol = '░';
                         MapColor = ConsoleColor.Yellow;
                         DefenseBonus = -2;
+                        break;
                     case TerrainType.Swamp:
                         SilverProduction = 3;
                         MapSymbol = '~';
                         DefenseBonus = -3;
+                        break;
                     case TerrainType.Fortress:
                         SilverProduction = 2;
                         GoldProduction = 5;
                         MapSymbol = '⌂';
                         MapColor = ConsoleColor.Red;
                         DefenseBonus = 10;
+                        break;
                 }
+            }
             public void ConnectTo(Region otherRegion)
+            {
                 if (!ConnectedRegions.Contains(otherRegion))
+                {
                     ConnectedRegions.Add(otherRegion);
                     otherRegion.ConnectedRegions.Add(this);
+                }
+            }
             public bool CanBeEnteredBy(Army army)
+            {
                 if (!IsPassable) return false;
                 
                 // Check if region is occupied by enemy
                 if (OccupyingArmy != null && OccupyingArmy.Owner != army.Owner)
+                {
                     return false; // Region occupied by enemy
+                }
                 return true;
+            }
             public void Capture(Player newOwner)
+            {
                 Owner = newOwner;
                 Console.WriteLine($"{RegionName} captured by {newOwner.PlayerName}!");
+            }
             public int CalculateMovementCost(MovementType movementType)
+            {
                 int baseCost = 1;
-                // Adjust movement cost based on terrain and unit type
-                        return movementType == MovementType.Flying ? baseCost : 99; // Impassable
+    
+                switch (Terrain)  // ✅ نتحقق من نوع التضاريس
+                {
+                    case TerrainType.Mountains:
+                        // ⛰️ الجبال: الطيران فقط ممكن، الباقي مستحيل
+                        return movementType == MovementType.Flying ? baseCost : 99;
+            
+                    case TerrainType.River:
+                        // 🌊 النهر: السفن فقط سريعة، الباقي بطيء
                         return movementType == MovementType.Naval ? baseCost : baseCost * 3;
+            
+                    case TerrainType.Forest:
+                        // 🌲 الغابة: المشاة سريعون، الباقي بطيء
                         return movementType == MovementType.Infantry ? baseCost : baseCost * 2;
-                        return movementType == MovementType.Cavalry ? baseCost * 2 : baseCost * 1.5;
+            
+                    case TerrainType.Desert:
+                        // 🏜️ الصحراء: الخيالة بطيئون، الباقي متوسط
+                        return movementType == MovementType.Cavalry ? baseCost * 2 : (int)(baseCost * 1.5);
+            
+                    case TerrainType.Swamp:
+                    // 🐊 المستنقع: الطيران فقط سريع، الباقي بطيء جداً
                         return movementType == MovementType.Flying ? baseCost : baseCost * 4;
+            
                     default:
+                        // 🟦 باقي التضاريس: تكلفة عادية
                         return baseCost;
+                }
+            }
             public override string ToString()
+            {
                 string ownerName = Owner?.PlayerName ?? "Neutral";
                 string armyInfo = OccupyingArmy?.ToString() ?? "No army";
                 return $"{RegionName} ({X},{Y}) - {Terrain} - Owner: {ownerName} - {armyInfo}";
+            }
         }
     }
