@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WarRegions.Core.Models;  // ✅ للـ Player
+using WarRegions.Models;       // ✅ للـ GameState
 
 
     // Core/Controllers/Economy/EconomyManager.cs
@@ -11,7 +13,7 @@ using System.Linq;
     // - Models/GameState.cs
     // - Development/DevConfig.cs
 
-    namespace WarRegonsClone.Controllers.Economy
+    namespace WarRegionsClone.Controllers.Economy
     {
         public class EconomyManager
         {

@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WarRegionsClone.Models;
-using WarRegionsClone.Models.Development;
-using WarRegionsClone.Models.Units;
+//using WarRegionsClone.Models.Development;
+//using WarRegionsClone.Models.Units;
+using WarRegions.Core.Models.Development;
 
 namespace WarRegionsClone.Controllers
 {

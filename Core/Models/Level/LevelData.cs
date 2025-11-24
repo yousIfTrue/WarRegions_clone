@@ -4,8 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;  // ⚠️ هذا كان مفقوداً في الكود الأصلي
-using WarRegionsClone.Controllers;  // لـ DevConfig
-using WarRegionsClone.Models.Development;  // لـ DevConfig
+using WarRegions.Core.Models.Development;
 
 namespace WarRegionsClone.Models.Level
 {
