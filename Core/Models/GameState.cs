@@ -132,7 +132,7 @@
             {
                 // Place human player army
                 var humanStartRegion = Regions.First(r => r.X == 0 && r.Y == 0);
-                var humanArmy = new Army(Players[0], "Human Army");
+                var humanArmy = new Army("Human Army", Players[0]);
                 humanArmy.CurrentRegion = humanStartRegion;
                 humanStartRegion.OccupyingArmy = humanArmy;
                 Armies.Add(humanArmy);

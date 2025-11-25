@@ -96,9 +96,9 @@
                 int levelsToUpgrade = targetLevel - currentLevel;
                 double multiplier = Math.Pow(CostMultiplierPerLevel, levelsToUpgrade - 1);
                 
-                int totalSilver = (int)(SilverCost * multiplier * levelsToUpgrade);
-                int totalGold = (int)(GoldCost * multiplier * levelsToUpgrade);
-                
+                int totalSilver = (int)Math.Ceiling(SilverCost * multiplier * levelsToUpgrade);
+                int totalGold = (int)Math.Ceiling(GoldCost * multiplier * levelsToUpgrade);
+
                 // Apply development config multiplier if in debug mode
                 if (DevConfig.DebugMode)
                 {
@@ -118,7 +118,7 @@
                 double multiplier = Math.Pow(CostMultiplierPerLevel, levelsToUpgrade - 1);
                 
                 int totalSilver = (int)(SilverCost * multiplier * levelsToUpgrade);
-                int totalGold = (int)(GoldCost * multiplier * levelsToUpgrade);
+                int totalGold = (int)Math.Ceiling(GoldCost * multiplier * levelsToUpgrade);
                 
                 // Apply development config multiplier if in debug mode
                 if (DevConfig.DebugMode)

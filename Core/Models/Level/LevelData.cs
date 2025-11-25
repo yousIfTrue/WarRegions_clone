@@ -3,6 +3,11 @@ namespace WarRegions.Core.Models.Level
 {
     public partial class LevelData  // جعلها partial لسهولة التعديل
     {
+        public string LevelName { get; set; } = "Battle Field";
+        public int MapWidth { get; set; } = 10;
+        public int MapHeight { get; set; } = 8;
+        public string AIDifficulty { get; set; } = "normal";
+        public string AIBehavior { get; set; } = "aggressive";
         public class VictoryCondition
         {
             public string Type { get; set; } = "eliminate_all";
