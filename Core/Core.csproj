@@ -17,5 +17,15 @@
     <Using Include="WarRegions.Core.Controllers.Pathfinding" />
     <Using Include="WarRegions.Core.Controllers.Economy" />
     <Using Include="System.Diagnostics" />
+    
+    <!-- ✅ أضف هذه الأسطر -->
+    <Using Include="WarRegions.Presentation.Interface2D.Scripts.ViewManager2D" Alias="ViewManager2D" />
+    <Using Include="WarRegions.Presentation.Interface3D.Scripts.ViewManager3D" Alias="ViewManager3D" />
+  </ItemGroup>
+
+  <!-- ✅ أضف هذا الجزء -->
+  <ItemGroup>
+    <Compile Include="../Presentation/Interface2D/Scripts/ViewManager2D.cs" Link="ViewManagers/ViewManager2D.cs" />
+    <Compile Include="../Presentation/Interface3D/Scripts/ViewManager3D.cs" Link="ViewManagers/ViewManager3D.cs" />
   </ItemGroup>
 </Project>
