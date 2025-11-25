@@ -17,6 +17,9 @@ global using System.Diagnostics;
 // Interfaces
 global using WarRegions.Core.Interfaces;
 
+//Views
+global using WarRegions.Presentation.Interface2D.Scripts;
+global using WarRegions.Presentation.Interface3D.Scripts;
 // Controllers
 global using WarRegions.Core.Controllers;
 global using WarRegions.Core.Controllers.Pathfinding;
@@ -35,5 +38,3 @@ global using ShopItem = WarRegions.Core.Models.Economy.ShopItem;
 global using Transaction = WarRegions.Core.Models.Economy.Transaction;
 global using SpawnPoint = WarRegions.Core.Models.Level.SpawnPoint;
 global using DevConfig = WarRegions.Core.Models.Development.DevConfig;
-global using WarRegions.Core.Interfaces;  // لواجهة IViewManager
-global using WarRegions.Core.Views;       // لـ ViewManager2D و ViewManager3D
