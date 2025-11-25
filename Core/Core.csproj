@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- استخدام الـ namespaces الفعلية -->
     <Using Include="WarRegions.Core.Models" />
     <Using Include="WarRegions.Core.Models.Terrain" />
     <Using Include="WarRegions.Core.Models.Units" />
