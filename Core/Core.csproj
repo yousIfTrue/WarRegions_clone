@@ -28,4 +28,41 @@
     <Compile Include="../Presentation/Interface2D/Scripts/ViewManager2D.cs" Link="ViewManagers/ViewManager2D.cs" />
     <Compile Include="../Presentation/Interface3D/Scripts/ViewManager3D.cs" Link="ViewManagers/ViewManager3D.cs" />
   </ItemGroup>
+  <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>11.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="WarRegions.Core.Models" />
+    <Using Include="WarRegions.Core.Models.Terrain" />
+    <Using Include="WarRegions.Core.Models.Units" />
+    <Using Include="WarRegions.Core.Models.Level" />
+    <Using Include="WarRegions.Core.Models.Economy" />
+    <Using Include="WarRegions.Core.Models.Development" />
+    <Using Include="WarRegions.Core.Interfaces" />
+    <Using Include="WarRegions.Core.Controllers" />
+    <Using Include="WarRegions.Core.Controllers.Pathfinding" />
+    <Using Include="WarRegions.Core.Controllers.Economy" />
+    <Using Include="System.Diagnostics" />
+    
+    <!-- ✅ أضف هذه الأسطر -->
+    <Using Include="WarRegions.Presentation.Interface2D.Scripts.ViewManager2D" Alias="ViewManager2D" />
+    <Using Include="WarRegions.Presentation.Interface3D.Scripts.ViewManager3D" Alias="ViewManager3D" />
+    </ItemGroup>
+    
+      <ItemGroup>
+    <!-- إضافة حزم Unity -->
+    <PackageReference Include="UnityEngine" Version="2022.3.0" />
+    <PackageReference Include="UnityEditor" Version="2022.3.0" />
+    </ItemGroup>
+    
+    <!-- ✅ أضف هذا الجزء -->
+    <ItemGroup>
+      <Compile Include="../Presentation/Interface2D/Scripts/ViewManager2D.cs" Link="ViewManagers/ViewManager2D.cs" />
+      <Compile Include="../Presentation/Interface3D/Scripts/ViewManager3D.cs" Link="ViewManagers/ViewManager3D.cs" />
+    </ItemGroup>
+    
 </Project>
