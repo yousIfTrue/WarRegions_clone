@@ -1,4 +1,4 @@
-// Core/Models/Development/DevConfig.cs
+
 namespace WarRegions.Core.Models.Development
 {
     public static class DevConfig

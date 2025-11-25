@@ -1,10 +1,7 @@
 // Core/Models/Army.cs
 namespace WarRegions.Core.Models
 {
-    public class Army
-    {
-        public string ArmyName { get; set; } = "Unnamed Army";
-        public List<UnitCard> Units { get; set; } = new List<UnitCard>();
+    pub public List<UnitCard> Units { get; set; } = new List<UnitCard>();
         public int Supply { get; set; } = 100;
         public int Morale { get; set; } = 100;
         public Player Owner { get; set; }

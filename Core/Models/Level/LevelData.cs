@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-// namespace: WarRegions.Core.Models.Level
+
 namespace WarRegions.Core.Models.Level
 {
     public partial class LevelData  // جعلها partial لسهولة التعديل

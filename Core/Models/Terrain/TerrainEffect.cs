@@ -1,4 +1,4 @@
-using System;
+
 namespace WarRegions.Core.Models.Terrain
 {
     public class TerrainEffect
