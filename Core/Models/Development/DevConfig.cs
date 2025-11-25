@@ -29,9 +29,49 @@ namespace WarRegions.Core.Models.Development
         public static bool UnlockAllUnits => false;
         public static bool InfiniteResources => false;
         
-        public static void Log(string message)
+        public static void ApplyDevelopmentCheats(GameState gameState)
         {
-            if (DebugMode) Console.WriteLine($"[DEV] {message}");
+            if (EnableCheats)
+            {
+                Console.WriteLine("[DEV] Applying development cheats...");
+        
+                // كود الغش هنا
+                if (InfiniteResources)
+                {
+                    // تعيين موارد لا نهائية لكل لاعب
+                    foreach (var player in gameState.Players)
+                    {
+                        player.Silver = 99999;
+                        player.Gold = 9999;
+                        player.Morale = 100;
+                    }
+                    Console.WriteLine("[DEV] Infinite resources activated");
+                }
+        
+                if (UnlockAllUnits)
+                {
+                    // فتح جميع الوحدات لكل لاعب
+                    var allUnitTypes = new[] { "infantry", "archer", "cavalry", "siege", "naval", "flying" };
+                    foreach (var player in gameState.Players)
+                    {
+                        foreach (var unitType in allUnitTypes)
+                        {
+                            if (!player.UnlockedUnits.Contains(unitType))
+                            {
+                                player.UnlockedUnits.Add(unitType);
+                            }
+                        }
+                    }
+                    Console.WriteLine("[DEV] All units unlocked");
+                }
+        
+                if (DebugMode)
+                {
+                    // إعدادات التصحيح الإضافية
+                    gameState.TurnNumber = 1; // بداية من الدور الأول
+                    Console.WriteLine("[DEV] Debug mode enhancements applied");
+                }
+            }
         }
     }
 }

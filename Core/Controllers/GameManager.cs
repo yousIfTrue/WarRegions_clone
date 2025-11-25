@@ -14,20 +14,22 @@ namespace WarRegions.Core.Controllers
         private LevelManager _levelManager;
         private BattleCalculator _battleCalculator;
         private AIController _aiController;
-        
+        private GameState _gameState;
+        private TerrainManager _terrainManager;
         // Event delegates
         public delegate void GameEvent(string message);
         public event GameEvent OnGameStart;
         public event GameEvent OnGameEnd;
         public event GameEvent OnTurnStart;
         public event GameEvent OnTurnEnd;
-        
+        _terrainManager = new TerrainManager();
         public GameManager()
         {
             CurrentGame = new GameState();
             _levelManager = new LevelManager();
             _battleCalculator = new BattleCalculator();
-            _aiController = new AIController();
+            //_aiController = new AIController(_gameState, _battleCalculator, _terrainManager);
+            _aiController = new AIController(_gameState, _battleCalculator, _terrainManager);
             
             Console.WriteLine("[GAME] GameManager initialized");
         }
@@ -44,21 +46,30 @@ namespace WarRegions.Core.Controllers
             OnGameStart?.Invoke("Game initialized successfully");
         }
         
-        public void SetViewMode(ViewMode newMode)
-        {
-            // Clean up current view manager if exists
-            CurrentViewManager?.Cleanup();
-            
-            CurrentViewManager = newMode switch
-            {
-                ViewMode.View2D => new ViewManager2D(),
-                ViewMode.View3D => new ViewManager3D(),
-                _ => new ViewManager2D()
-            };
-            
-            CurrentViewManager.Initialize();
-            Console.WriteLine($"[GAME] View mode set to: {newMode}");
-        }
+public void SetViewMode(ViewMode newMode)
+{
+    // Clean up current view manager if exists
+    CurrentViewManager?.Cleanup();
+    
+    // Initialize the appropriate view manager
+    CurrentViewManager = newMode switch
+    {
+        ViewMode.View2D => ViewManager2D.Instance,
+        ViewMode.View3D => ViewManager3D.Instance,
+        _ => ViewManager2D.Instance
+    };
+    
+    // Initialize only if not already initialized
+    if (!CurrentViewManager.IsInitialized)
+    {
+        CurrentViewManager.Initialize();
+    }
+    
+    // Reinitialize terrain for the new view mode
+    TerrainManager.Instance.SwitchViewMode(newMode);
+    
+    Console.WriteLine($"[GAME] View mode set to: {newMode}");
+}
         
         public void StartNewGame(Player humanPlayer, string levelId = "level_01")
         {
