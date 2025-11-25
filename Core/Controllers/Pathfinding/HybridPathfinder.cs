@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-    namespace WarRegions.Controllers.Pathfinding
+    namespace WarRegions.Core.Controllers.Pathfinding
     {
             // Core/Controllers/Pathfinding/HybridPathfinder.cs
     // Dependencies:

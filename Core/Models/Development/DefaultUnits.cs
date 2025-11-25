@@ -1,5 +1,3 @@
-/*using System.Collections.Generic;
-using WarRegions.Core.Models.Units;*/
 
 using System;
 using System.Collections.Generic;
