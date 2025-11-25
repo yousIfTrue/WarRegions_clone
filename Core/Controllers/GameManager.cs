@@ -40,7 +40,7 @@ namespace WarRegions.Core.Controllers
             SetViewMode(startMode);
             
             // Apply development configuration
-            DevConfig.ApplyDevelopmentCheats(CurrentGame.Players.FirstOrDefault());
+            DevConfig.ApplyDevelopmentCheats(CurrentGame);  // ✅ صحيح
             
             Console.WriteLine($"[GAME] GameManager initialized with {startMode} view");
             OnGameStart?.Invoke("Game initialized successfully");
@@ -49,7 +49,7 @@ namespace WarRegions.Core.Controllers
 public void SetViewMode(ViewMode newMode)
 {
     // Clean up current view manager if exists
-    CurrentViewManager?.Cleanup();
+    CurrentViewManager?.CleanScreen();
     
     // Initialize the appropriate view manager
     CurrentViewManager = newMode switch
@@ -66,8 +66,10 @@ public void SetViewMode(ViewMode newMode)
     }
     
     // Reinitialize terrain for the new view mode
-    TerrainManager.Instance.SwitchViewMode(newMode);
-    
+    // ✅ صحيح - إنشاء instance جديد
+    var terrainManager = new TerrainManager();
+    terrainManager.SwitchViewMode(newMode);
+
     Console.WriteLine($"[GAME] View mode set to: {newMode}");
 }
         
@@ -84,7 +86,7 @@ public void SetViewMode(ViewMode newMode)
                 }
                 
                 // Add default units to player for development
-                if (DevConfig.AllUnitsUnlocked)
+                if (DevConfig.UnlockAllUnits)  // ✅ صحيح - الخاصية الموجودة
                     DefaultUnits.AddDefaultUnitsToPlayer(humanPlayer);
                 
                 // Initialize game state

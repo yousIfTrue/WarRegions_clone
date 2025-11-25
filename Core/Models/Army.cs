@@ -11,13 +11,21 @@ namespace WarRegions.Core.Models
         public int Experience { get; set; } = 0;
         public Region CurrentRegion { get; set; }
         public bool IsDefeated => !Units.Any(u => u.IsAlive);
+            // ✅ أضف هذه الخواص والداالة الجديدة
+        public int MovementPoints { get; set; } = 10;
+        public int MaxMovementPoints { get; set; } = 10;
 
+        public void ResetMovementPoints()
+        {
+            MovementPoints = MaxMovementPoints;
+        }
         public Army() { }
 
         public Army(string name, Player owner)
         {
             ArmyName = name;
             Owner = owner;
+            MovementPoints = MaxMovementPoints; // ✅ تهيئة نقاط الحركة
         }
 
         // طرق أساسية

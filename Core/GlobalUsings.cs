@@ -35,3 +35,5 @@ global using ShopItem = WarRegions.Core.Models.Economy.ShopItem;
 global using Transaction = WarRegions.Core.Models.Economy.Transaction;
 global using SpawnPoint = WarRegions.Core.Models.Level.SpawnPoint;
 global using DevConfig = WarRegions.Core.Models.Development.DevConfig;
+global using WarRegions.Core.Interfaces;  // لواجهة IViewManager
+global using WarRegions.Core.Views;       // لـ ViewManager2D و ViewManager3D

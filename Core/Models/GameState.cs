@@ -139,7 +139,7 @@
                 
                 // Place AI army
                 var aiStartRegion = Regions.First(r => r.X == level.MapWidth - 1 && r.Y == level.MapHeight - 1);
-                var aiArmy = new Army(Players[1], "AI Army");
+                var aiArmy = new Army( "AI Army", Players[1]);
                 aiArmy.CurrentRegion = aiStartRegion;
                 aiStartRegion.OccupyingArmy = aiArmy;
                 Armies.Add(aiArmy);

@@ -33,13 +33,13 @@
             public int GetSilverCost(int currentLevel = 1, int targetLevel = 2)
             {
                 double baseCost = 100 * Math.Pow(1.5, currentLevel - 1);
-                double totalCost = 0;
+                double totalCost = 0.0;
             
                 for (int level = currentLevel; level < targetLevel; level++)
                 {
                     totalCost += baseCost * Math.Pow(1.5, level - currentLevel);
                 }
-            
+                
                 return (int)totalCost; // ✅ تحويل صريح
             }
         
@@ -102,8 +102,8 @@
                 // Apply development config multiplier if in debug mode
                 if (DevConfig.DebugMode)
                 {
-                    totalSilver *= DevConfig.UnitUpgradeCostMultiplier;
-                    totalGold *= DevConfig.UnitUpgradeCostMultiplier;
+                    totalSilver = (int)(totalSilver * DevConfig.UnitUpgradeCostMultiplier);
+                    totalGold = (int)(totalGold * DevConfig.UnitUpgradeCostMultiplier);
                 }
                 
                 return totalSilver + (totalGold * Currency.SilverToGoldRate);
@@ -123,8 +123,8 @@
                 // Apply development config multiplier if in debug mode
                 if (DevConfig.DebugMode)
                 {
-                    totalSilver *= DevConfig.UnitUpgradeCostMultiplier;
-                    totalGold *= DevConfig.UnitUpgradeCostMultiplier;
+                    totalSilver *= (int)(DevConfig.UnitUpgradeCostMultiplier);
+                    totalGold *= (int)(DevConfig.UnitUpgradeCostMultiplier);
                 }
                 
                 return (totalSilver, totalGold);
