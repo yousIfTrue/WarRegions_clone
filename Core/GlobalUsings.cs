@@ -27,4 +27,3 @@ global using UnitRarity = WarRegions.Core.Models.Units.UnitRarity;
 global using Player = WarRegions.Core.Models.Player;
 global using ShopItem = WarRegions.Core.Models.Economy.ShopItem;
 global using Transaction = WarRegions.Core.Models.Economy.Transaction;
-global using SpawnPoint = WarRegions.Core.Models.Level.SpawnPoint;
