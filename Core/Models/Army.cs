@@ -1,11 +1,15 @@
 // Core/Models/Army.cs
 namespace WarRegions.Core.Models
 {
-    pub public List<UnitCard> Units { get; set; } = new List<UnitCard>();
+    public class Army
+    {
+        public string ArmyName { get; set; } = "Unnamed Army";
+        public List<UnitCard> Units { get; set; } = new List<UnitCard>();
         public int Supply { get; set; } = 100;
         public int Morale { get; set; } = 100;
         public Player Owner { get; set; }
         public int Experience { get; set; } = 0;
+        public Region CurrentRegion { get; set; }
         public bool IsDefeated => !Units.Any(u => u.IsAlive);
 
         public Army() { }
@@ -35,13 +39,18 @@ namespace WarRegions.Core.Models
         {
             foreach (var unit in Units)
             {
-                // سيتم تطبيق العلاج عندما نضيف نظام الصحة
+                // تطبيق العلاج لاحقاً
             }
         }
 
         public void RestoreSupply()
         {
             Supply = 100;
+        }
+
+        public bool IsInRegion(Region region)
+        {
+            return CurrentRegion?.RegionId == region?.RegionId;
         }
 
         public override string ToString()
