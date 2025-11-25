@@ -1,13 +1,14 @@
 //the old code is down
 
 // Core/Models/Level/LevelData.cs
-using WarRegions.Core.Models;
+using WarRegions.Core.Models;           // ✅ أضفناها للـ GameState
 using System;
 using System.Collections.Generic;
 using System.Linq;  // ⚠️ هذا كان مفقوداً في الكود الأصلي
 using WarRegions.Core.Models.Development;
 
-namespace WarRegionsClone.Models.Level
+// namespace: WarRegions.Core.Models.Level
+namespace WarRegions.Core.Models.Level
 {
     public partial class LevelData  // جعلها partial لسهولة التعديل
     {

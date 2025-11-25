@@ -1,12 +1,8 @@
-/*using System;
-using System.Collections.Generic;
-using System.Linq;*/
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WarRegions.Core.Models.Level;    // ✅ أضفناها للـ LevelData
 // namespace: WarRegions.Core.Models
-
     namespace WarRegions.Core.Models
     {
             // GameState.cs

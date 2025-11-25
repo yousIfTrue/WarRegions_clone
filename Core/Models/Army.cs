@@ -1,12 +1,8 @@
-/*using System.Collections.Generic;
-using WarRegions.Core.Models.Units;*/
-
-using WarRegions.Core.Models.Units;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WarRegions.Core.Models.Units;    // ✅ أضفناها للـ UnitCard
 // namespace: WarRegions.Core.Models
-
 namespace WarRegions.Core.Models
 {
     public class Army

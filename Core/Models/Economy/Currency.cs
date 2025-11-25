@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-    
+using WarRegions.Core.Models;          // ✅ أضفناها للـ Player
+using WarRegions.Core.Models.Units;    // ✅ أضفناها للـ UnitCard
+// namespace: WarRegions.Core.Models.Economy
     namespace WarRegions.Models.Economy
     {
         public static class Currency

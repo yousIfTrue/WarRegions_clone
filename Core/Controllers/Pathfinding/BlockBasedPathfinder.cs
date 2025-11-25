@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using WarRegions.Core.Models.Units;
-    
-    namespace WarRegions.Controllers.Pathfinding
+using WarRegions.Core.Models;          // ✅ موجود مسبقاً
+using WarRegions.Core.Models.Units;    // ✅ أضفناها للـ MovementType
+// namespace: WarRegions.Core.Controllers.Pathfinding
+    namespace WarRegions.Core.Controllers.Pathfinding
     {
             // Core/Controllers/Pathfinding/BlockBasedPathfinder.cs
     // Dependencies:
