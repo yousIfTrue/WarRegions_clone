@@ -32,6 +32,16 @@ namespace WarRegions.Core.Models.Economy
             return CurrencyType == "gold" ? Cost : Cost / 100;
         }
     }
+    public enum ShopItemType
+    {
+        Unit,
+        Equipment,
+        Resource,
+        Boost,
+        Cosmetic,
+        Special
+    }
+
 }
 
 
