@@ -29,6 +29,46 @@
             public List<string> RequiredItems { get; set; }
             public string RequiredBuilding { get; set; }
             
+            // ✅ إصلاح طرق الحساب مع التحويل الصحيح
+            public int GetSilverCost(int currentLevel = 1, int targetLevel = 2)
+            {
+                double baseCost = 100 * Math.Pow(1.5, currentLevel - 1);
+                double totalCost = 0;
+            
+                for (int level = currentLevel; level < targetLevel; level++)
+                {
+                    totalCost += baseCost * Math.Pow(1.5, level - currentLevel);
+                }
+            
+                return (int)totalCost; // ✅ تحويل صريح
+            }
+        
+            public int GetGoldCost(int currentLevel = 1, int targetLevel = 2)
+            {
+                double baseCost = 10 * Math.Pow(1.3, currentLevel - 1);
+                double totalCost = 0;
+            
+                for (int level = currentLevel; level < targetLevel; level++)
+                {
+                    totalCost += baseCost * Math.Pow(1.3, level - currentLevel);
+                }
+            
+                return (int)Math.Ceiling(totalCost); // ✅ تحويل صريح مع تقريب
+            }
+        
+            public int GetTotalTimeSeconds(int currentLevel = 1, int targetLevel = 2)
+            {
+                double baseTime = 60 * Math.Pow(1.2, currentLevel - 1);
+                double totalTime = 0;
+            
+                for (int level = currentLevel; level < targetLevel; level++)
+                {
+                    totalTime += baseTime * Math.Pow(1.2, level - currentLevel);
+                }
+            
+                return (int)Math.Ceiling(totalTime); // ✅ تحويل صريح مع تقريب
+            }
+        
             // Results
             public int StatIncrease { get; set; }
             public string NewAbility { get; set; }
@@ -304,7 +344,6 @@
                 """;
             }
         }
-        
         public enum UpgradeType
         {
             Unit,
@@ -314,4 +353,5 @@
             Armor,
             Special
         }
+        
     }

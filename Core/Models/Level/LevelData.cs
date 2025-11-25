@@ -9,7 +9,23 @@ namespace WarRegions.Core.Models.Level
             public string Target { get; set; } = "enemy_units";
             public int RequiredCount { get; set; } = 0;
             public int TimeLimit { get; set; } = 0;
-            
+            // ✅ إضافة الخصائص المطلوبة
+            public int MapWidth { get; set; } = 10;
+            public int MapHeight { get; set; } = 8;
+            public string AIDifficulty { get; set; } = "normal";
+            public string AIBehavior { get; set; } = "aggressive";
+        
+            // ✅ إضافة طرق مساعدة
+            public bool IsPositionValid(int x, int y)
+            {
+                return x >= 0 && x < MapWidth && y >= 0 && y < MapHeight;
+            }
+        
+            public int GetTotalRegions()
+            {
+                return MapWidth * MapHeight;
+            }
+
             public VictoryCondition() { }
             
             public VictoryCondition(string type, string target = "enemy_units", int requiredCount = 0)
