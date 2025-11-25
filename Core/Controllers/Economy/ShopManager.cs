@@ -34,12 +34,20 @@
                 if (!_isEnabled) return;
                 
                 // Basic units
+                /*
                 _availableItems.Add(new ShopItem("foot_soldier", "Foot Soldier", "Basic infantry unit", ShopItemType.Unit, 100))
                 {
                     Description = "A reliable infantry unit",
                     RequiredLevel = 1
                 });
-                
+                */
+                // ✅ صحيح - قوسي التهيئة يتبعان مباشرة استدعاء الدالة
+                _availableItems.Add(new ShopItem("foot_soldier", "Foot Soldier", "Basic infantry unit", ShopItemType.Unit, 100)
+                {
+                    Description = "A reliable infantry unit",
+                    RequiredLevel = 1
+                });
+
                 _availableItems.Add(new ShopItem("Archer", ShopItemType.Unit, 150)
                 {
                     Description = "Ranged unit with good attack",

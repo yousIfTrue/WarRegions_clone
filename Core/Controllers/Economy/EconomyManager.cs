@@ -244,6 +244,20 @@
                 """;
             }
             
+/*            private string GetFinancialHealthRating(int netWeekly)
+            {
+                return netWeekly switch
+                {
+                    > 1000 => "Excellent 💰",
+                    > 500 => "Good 💵",
+                    > 100 => "Stable 📈",
+                    > 0 => "Breaking Even ⚖️",
+                    0 => "Balanced ⚖️",
+                    < 0 => "Deficit 📉",
+                    _ => "Unknown ❓"
+                };
+            }
+*/
             private string GetFinancialHealthRating(int netWeekly)
             {
                 return netWeekly switch
@@ -257,7 +271,6 @@
                     _ => "Unknown ❓"
                 };
             }
-            
             public void ApplyInflation(int turnNumber)
             {
                 // Simulate economic inflation over time
