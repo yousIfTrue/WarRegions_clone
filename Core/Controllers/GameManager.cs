@@ -22,9 +22,9 @@ namespace WarRegions.Core.Controllers
         public event GameEvent OnGameEnd;
         public event GameEvent OnTurnStart;
         public event GameEvent OnTurnEnd;
-        _terrainManager = new TerrainManager();
         public GameManager()
         {
+            _terrainManager = new TerrainManager();
             CurrentGame = new GameState();
             _levelManager = new LevelManager();
             _battleCalculator = new BattleCalculator();
