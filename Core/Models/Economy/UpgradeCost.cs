@@ -96,9 +96,9 @@
                 int levelsToUpgrade = targetLevel - currentLevel;
                 double multiplier = Math.Pow(CostMultiplierPerLevel, levelsToUpgrade - 1);
                 
+                // استبدال جميع عمليات التحويل بـ Math.Ceiling
                 int totalSilver = (int)Math.Ceiling(SilverCost * multiplier * levelsToUpgrade);
                 int totalGold = (int)Math.Ceiling(GoldCost * multiplier * levelsToUpgrade);
-
                 // Apply development config multiplier if in debug mode
                 if (DevConfig.DebugMode)
                 {

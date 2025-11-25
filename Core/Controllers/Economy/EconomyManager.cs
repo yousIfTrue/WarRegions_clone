@@ -62,12 +62,12 @@
                 Currency.ApplyDailyIncome(player, regionsControlled);
                 
                 // Record income transaction
-                var incomeTransaction = Transaction.CreateIncome(
+                var incomeTransaction = new Transaction(
                     player.PlayerId,
-                    "Daily region income",
+                    "income", 
                     Currency.CalculateBaseIncome(regionsControlled, player.LevelProgress),
-                    0
-                );
+                    "Daily region income"
+                    );
                 incomeTransaction.MarkAsSuccessful();
                 RecordTransaction(incomeTransaction);
                 

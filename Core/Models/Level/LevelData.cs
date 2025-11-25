@@ -8,6 +8,10 @@ namespace WarRegions.Core.Models.Level
         public int MapHeight { get; set; } = 8;
         public string AIDifficulty { get; set; } = "normal";
         public string AIBehavior { get; set; } = "aggressive";
+        // أضف في LevelData.cs:
+        public int SilverReward { get; set; } = 500;
+        public int GoldReward { get; set; } = 50;
+        public int TurnsLimit { get; set; } = 30;
         public class VictoryCondition
         {
             public string Type { get; set; } = "eliminate_all";

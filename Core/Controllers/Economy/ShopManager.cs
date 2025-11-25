@@ -34,7 +34,7 @@
                 if (!_isEnabled) return;
                 
                 // Basic units
-                _availableItems.Add(new ShopItem("Foot Soldier", ShopItemType.Unit, 100)
+                _availableItems.Add(new ShopItem("foot_soldier", "Foot Soldier", "Basic infantry unit", ShopItemType.Unit, 100))
                 {
                     Description = "A reliable infantry unit",
                     RequiredLevel = 1
