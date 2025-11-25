@@ -13,7 +13,7 @@ global using WarRegions.Core.Models.Units;
 global using WarRegions.Core.Models.Level;
 global using WarRegions.Core.Models.Economy;
 global using WarRegions.Core.Models.Development;
-
+global using System.Diagnostics;
 // Interfaces
 global using WarRegions.Core.Interfaces;
 
