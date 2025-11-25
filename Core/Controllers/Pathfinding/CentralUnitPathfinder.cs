@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
     
-    namespace WarRegions.Controllers.Pathfinding
+    namespace WarRegions.Core.Controllers.Pathfinding
     {
             // Core/Controllers/Pathfinding/CentralUnitPathfinder.cs
     // Dependencies:
@@ -20,7 +20,7 @@ using System.Linq;
             }
             
             public List<TerrainTile> FindPath(int startX, int startY, int targetX, int targetY, 
-                                            MovementType movementType, int maxCost = 100)
+            MovementType movementType, int maxCost = 100)
             {
                 // Implementation of A* pathfinding algorithm
                 var openSet = new List<TerrainTile>();

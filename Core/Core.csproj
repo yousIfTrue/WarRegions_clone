@@ -1,15 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <RootNamespace>WarRegions.Core</RootNamespace>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Models/**/*.cs" />
-    <Compile Include="Controllers/**/*.cs" />
-    <Compile Include="Interfaces/**/*.cs" />
+    <!-- تغطية جميع الـ namespaces المحتملة -->
+    <Using Include="WarRegions.Core.Models" />
+    <Using Include="WarRegions.Core.Models.Terrain" />
+    <Using Include="WarRegions.Core.Models.Units" />
+    <Using Include="WarRegions.Core.Models.Level" />
+    <Using Include="WarRegions.Core.Models.Economy" />
+    <Using Include="WarRegions.Models" />
+    <Using Include="WarRegions.Models.Terrain" />
+    <Using Include="WarRegions.Models.Units" />
+    <Using Include="WarRegions.Models.Level" />
+    <Using Include="WarRegions.Models.Economy" />
+    <Using Include="WarRegions.Core.Interfaces" />
+    <Using Include="WarRegions.Interfaces" />
+    <Using Include="WarRegions.Core.Controllers" />
+    <Using Include="WarRegions.Core.Controllers.Pathfinding" />
+    <Using Include="WarRegions.Core.Controllers.Economy" />
+    <Using Include="WarRegions.Controllers" />
+    <Using Include="WarRegions.Controllers.Pathfinding" />
+    <Using Include="WarRegions.Controllers.Economy" />
   </ItemGroup>
 </Project>
