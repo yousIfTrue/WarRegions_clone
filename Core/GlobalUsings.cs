@@ -11,10 +11,10 @@ global using WarRegions.Core.Models.Level;
 global using WarRegions.Core.Models.Economy;
 global using WarRegions.Core.Models.Development;
 
-// Interfaces - بناءً على الهيكل الفعلي
+// Interfaces
 global using WarRegions.Core.Interfaces;
 
-// Controllers - بناءً على الهيكل الفعلي
+// Controllers
 global using WarRegions.Core.Controllers;
 global using WarRegions.Core.Controllers.Pathfinding;
 global using WarRegions.Core.Controllers.Economy;
@@ -25,3 +25,6 @@ global using MovementType = WarRegions.Core.Models.Units.MovementType;
 global using UnitCard = WarRegions.Core.Models.Units.UnitCard;
 global using UnitRarity = WarRegions.Core.Models.Units.UnitRarity;
 global using Player = WarRegions.Core.Models.Player;
+global using ShopItem = WarRegions.Core.Models.Economy.ShopItem;
+global using Transaction = WarRegions.Core.Models.Economy.Transaction;
+global using SpawnPoint = WarRegions.Core.Models.Level.SpawnPoint;
