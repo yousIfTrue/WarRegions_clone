@@ -29,6 +29,9 @@ using System.Linq;
             public bool IsAlive { get; set; } = true;
             public int CurrentHealth { get; set; }
             
+            public double GetCombatStrength() => 1.0; // مؤقت - يمكن تحسينه لاحقاً
+            public Player Owner { get; set; }
+            
             public UnitCard()
             {
                 UnitId = Guid.NewGuid().ToString();
