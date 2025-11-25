@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
     
-    namespace WarRegions.Models.Level
+    namespace WarRegions.Core.Models.Level
     {
             // Core/Models/Level/SpawnPoint.cs
     // Dependencies:
