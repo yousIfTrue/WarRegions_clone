@@ -22,7 +22,7 @@ global using WarRegions.Core.Models.Terrain;
 global using WarRegions.Core.Models.Units;
 
 // إذا احتجت الوصول إلى CLI من Core
-global using WarRegions.CLI;
+// global using WarRegions.CLI;
 
 // أنواع أساسية للراحة
 global using Army = WarRegions.Core.Models.Army;
