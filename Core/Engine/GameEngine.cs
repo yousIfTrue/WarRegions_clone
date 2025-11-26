@@ -105,7 +105,7 @@ namespace WarRegions.Core.Engine
             }
             else
             {
-                var call = new DelayedCal(action, delay);
+                var call = new DelayedCall(action, delay);
                 lock (_callsLock)
                 {
                     _pendingCalls.Add(call);
@@ -195,8 +195,8 @@ namespace WarRegions.Core.Engine
             // Clear thread reference when exiting loop
             _gameThread = null;
         }
-
-        private void Updates()
+        // private void Updates()
+        private void UpdateDelayedCalls()
         {
             // Merge pending into active
             lock (_callsLock)
@@ -232,12 +232,12 @@ namespace WarRegions.Core.Engine
             }
         }
 
-        private class DelayedCal
+        private class DelayedCall
         {
             private readonly Action _action;
             private float _remainingTime;
 
-            public DelayedCal(Action action, float delay)
+            public DelayedCall(Action action, float delay)
             {
                 _action = action ?? throw new ArgumentNullException(nameof(action));
                 _remainingTime = delay;
