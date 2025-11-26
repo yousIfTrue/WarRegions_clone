@@ -19,9 +19,6 @@
     <Using Include="WarRegions.Core.Controllers.Economy" />
     <Using Include="System.Diagnostics" />
     
-    <!-- Using directives للـ ViewManagers -->
-    <Using Include="WarRegions.Presentation.Interface2D.Scripts.ViewManager2D" Alias="ViewManager2D" />
-    <Using Include="WarRegions.Presentation.Interface3D.Scripts.ViewManager3D" Alias="ViewManager3D" />
   </ItemGroup>
 
 </Project>
