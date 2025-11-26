@@ -232,7 +232,7 @@ namespace WarRegions.Core.Engine
             }
         }
 
-        private  DelayedCal
+        private class DelayedCal
         {
             private readonly Action _action;
             private float _remainingTime;
