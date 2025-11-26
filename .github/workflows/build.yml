@@ -15,6 +15,7 @@ jobs:
             runtime: 'linux-arm64'
     
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     name: Build ${{ matrix.name }}
     
     steps:
