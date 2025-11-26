@@ -22,8 +22,10 @@ namespace WarRegions.Core.Engine
         private float _fixedTimeStep = 0.02f;
         private double _accumulatedTime;
 
-        private readonly List<DelayedCal> _delayedCalls = new List<DelayedCal>();
-        private readonly List<DelayedCal> _pendingCalls = new List<DelayedCal>();
+         
+        
+        private readonly List<DelayedCall> _delayedCalls = new List<DelayedCall>();  // ✅ DelayedCall
+        private readonly List<DelayedCall> _pendingCalls = new List<DelayedCall>();  // ✅ DelayedCall
         private readonly object _callsLock = new object();
 
         // Protect engine state that may be read from other threads
@@ -230,7 +232,7 @@ namespace WarRegions.Core.Engine
             }
         }
 
-        private class DelayedCal
+        private  DelayedCal
         {
             private readonly Action _action;
             private float _remainingTime;
