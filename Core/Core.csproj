@@ -1,24 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>11.0</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <!-- الـ Using directives الأساسية -->
-    <Using Include="WarRegions.Core.Models" />
-    <Using Include="WarRegions.Core.Models.Terrain" />
-    <Using Include="WarRegions.Core.Models.Units" />
-    <Using Include="WarRegions.Core.Models.Level" />
-    <Using Include="WarRegions.Core.Models.Economy" />
-    <Using Include="WarRegions.Core.Models.Development" />
-    <Using Include="WarRegions.Core.Interfaces" />
-    <Using Include="WarRegions.Core.Controllers" />
-    <Using Include="WarRegions.Core.Controllers.Pathfinding" />
-    <Using Include="WarRegions.Core.Controllers.Economy" />
-    <Using Include="System.Diagnostics" />
-    
-  </ItemGroup>
-
 </Project>

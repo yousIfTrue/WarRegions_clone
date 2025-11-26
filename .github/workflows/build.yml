@@ -1,22 +1,14 @@
-name: Build All Platforms
+name: Build for Termux Download
 
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        include:
-          - name: 'linux-x64'
-            runtime: 'linux-x64'
-          - name: 'termux-arm64'
-            runtime: 'linux-arm64'
-    
+  build-termux:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
-    name: Build ${{ matrix.name }}
     
     steps:
     - name: Checkout code
@@ -27,17 +19,32 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Publish for ${{ matrix.name }}
+    - name: Build Core
+      run: dotnet build Core/Core.csproj --configuration Release
+
+    - name: Build CLI
+      run: dotnet build CLI/CLI.csproj --configuration Release
+
+    - name: Publish for Termux (ARM64)
       run: |
         dotnet publish CLI/CLI.csproj \
           --configuration Release \
-          --runtime ${{ matrix.runtime }} \
+          --runtime linux-arm64 \
           --self-contained true \
           -p:PublishSingleFile=true \
-          --output ./publish-${{ matrix.name }}
+          -p:IncludeNativeLibrariesForSelfExtract=true \
+          --output ./publish-termux
 
-    - name: Upload ${{ matrix.name }} artifact
+    - name: Create Termux package
+      run: |
+        cd publish-termux
+        tar -czf ../warregions-termux.tar.gz .
+        cd ..
+        echo "Package created: $(ls -la *.tar.gz)"
+
+    - name: Upload Termux package
       uses: actions/upload-artifact@v4
       with:
-        name: warregions-${{ matrix.name }}
-        path: ./publish-${{ matrix.name }}/
+        name: warregions-termux
+        path: warregions-termux.tar.gz
+        retention-days: 7
