@@ -1,5 +1,5 @@
 
-namespaceWarRegions. Core.Engine
+namespace WarRegions.Core.Engine
 {
     // Simple Time façade that reads from GameEngine and provides timeScale, scaled/unscaled values and realtime.
     public static class Time
