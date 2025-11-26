@@ -1,4 +1,4 @@
-namespace Core.Controllers
+namespace WarRegions.Core.Controllers
 {
     public class EngineController
     {

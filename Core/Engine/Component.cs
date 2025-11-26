@@ -1,5 +1,5 @@
 
-namespace Core.Engine
+namespace WarRegions.Core.Engine
 {
     public class Component
     {

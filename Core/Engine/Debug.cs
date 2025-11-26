@@ -1,5 +1,5 @@
 
-namespace Core.Engine
+namespace WarRegions.Core.Engine
 {
     // Simple Debug shim to emulate Unity's Debug class.
     // Provides Log, LogWarning, LogError and an event hook for custom log sinks.

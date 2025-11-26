@@ -1,4 +1,4 @@
-namespace CLI
+namespace WarRegions.CLI
 {
     // Simple interactive CLI for controlling the minimal engine via EngineController.
     // No using directives here because GlobalUsings.cs is expected to provide them.
