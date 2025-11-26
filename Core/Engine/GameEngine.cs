@@ -23,7 +23,6 @@ namespace Core.Engine
         private double _accumulatedTime;
 
         private readonly List<DelayedCall> _delayedCalls = new List<DelayedCall>();
-        private readonly List<DelayedCall> _pendingCalls = new List<DelayedCall>();
         private readonly object _callsLock = new object();
 
         // Protect engine state that may be read from other threads

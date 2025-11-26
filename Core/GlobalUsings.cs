@@ -8,29 +8,21 @@ global using System.Text.Json;
 global using System.Diagnostics;
 global using System.Threading;
 
-// Core Models
+global using WarRegions.Core;
+global using WarRegions.Core.Controllers;
+global using WarRegions.Core.Controllers.Economy;
+global using WarRegions.Core.Controllers.Pathfinding;
+global using WarRegions.Core.Engine;
+global using WarRegions.Core.Interfaces;
 global using WarRegions.Core.Models;
+global using WarRegions.Core.Models.Development;
+global using WarRegions.Core.Models.Economy;
+global using WarRegions.Core.Models.Level;
 global using WarRegions.Core.Models.Terrain;
 global using WarRegions.Core.Models.Units;
-global using WarRegions.Core.Models.Level;
-global using WarRegions.Core.Models.Economy;
-global using WarRegions.Core.Models.Development;
-global using System.Diagnostics;
-// Interfaces
-global using WarRegions.Core.Interfaces;
 
-//Unity
-global using UnityEngine;
-global using UnityEngine.SceneManagement;
-
-//Views
-global using WarRegions.Presentation.Interface2D.Scripts;
-global using WarRegions.Presentation.Interface3D.Scripts;
-
-// Controllers
-global using WarRegions.Core.Controllers;
-global using WarRegions.Core.Controllers.Pathfinding;
-global using WarRegions.Core.Controllers.Economy;
+// إذا احتجت الوصول إلى CLI من Core
+global using WarRegions.CLI;
 
 // أنواع أساسية للراحة
 global using Army = WarRegions.Core.Models.Army;

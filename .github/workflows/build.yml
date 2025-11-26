@@ -1,20 +1,33 @@
-name: Clean Build Test
-on: [push, workflow_dispatch]
+name: Build for Termux
+
+on:
+  push:
+    branches: [ main ]
+
 jobs:
-  build:
+  build-termux:
     runs-on: ubuntu-latest
+    
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-dotnet@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0.x'
-    - name: Build Core
-      run: cd Core && dotnet build --configuration Release
-    - name: Build CLI
-      run: cd CLI && dotnet build --configuration Release
-    - uses: actions/upload-artifact@v4
+
+    - name: Publish for Android (ARM64)
+      run: |
+        dotnet publish CLI/CLI.csproj \
+          --configuration Release \
+          --runtime linux-arm64 \
+          --self-contained true \
+          -p:PublishSingleFile=true \
+          --output ./publish-termux
+
+    - name: Upload Termux artifact
+      uses: actions/upload-artifact@v3
       with:
-        name: clean-build
-        path: |
-          CLI/bin/Release/
-          Core/bin/Release/
+        name: warregions-termux
+        path: ./publish-termux/
