@@ -1,33 +1,42 @@
-name: Build for Termux
+name: Build All Platforms
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build-termux:
+  build:
+    strategy:
+      matrix:
+        include:
+          - name: 'linux-x64'
+            runtime: 'linux-x64'
+          - name: 'termux-arm64'
+            runtime: 'linux-arm64'
+    
     runs-on: ubuntu-latest
+    name: Build ${{ matrix.name }}
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
 
-    - name: Publish for Android (ARM64)
+    - name: Publish for ${{ matrix.name }}
       run: |
         dotnet publish CLI/CLI.csproj \
           --configuration Release \
-          --runtime linux-arm64 \
+          --runtime ${{ matrix.runtime }} \
           --self-contained true \
           -p:PublishSingleFile=true \
-          --output ./publish-termux
+          --output ./publish-${{ matrix.name }}
 
-    - name: Upload Termux artifact
-      uses: actions/upload-artifact@v3
+    - name: Upload ${{ matrix.name }} artifact
+      uses: actions/upload-artifact@v4
       with:
-        name: warregions-termux
-        path: ./publish-termux/
+        name: warregions-${{ matrix.name }}
+        path: ./publish-${{ matrix.name }}/
