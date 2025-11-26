@@ -22,8 +22,8 @@ namespace WarRegions.Core.Engine
         private float _fixedTimeStep = 0.02f;
         private double _accumulatedTime;
 
-        private readonly List<DelayedCall> _delayedCalls = new List<DelayedCall>();
-        private readonly List<DelayedCall> _pendingCalls = new List<DelayedCall>();
+        private readonly List<DelayedCal> _delayedCalls = new List<DelayedCal>();
+        private readonly List<DelayedCal> _pendingCalls = new List<DelayedCal>();
         private readonly object _callsLock = new object();
 
         // Protect engine state that may be read from other threads
@@ -86,7 +86,7 @@ namespace WarRegions.Core.Engine
             Debug.Log("Game Engine Stopped");
         }
 
-        public void DelayedCall(Action action, float delay)
+        public void DelayedCal(Action action, float delay)
         {
             if (action == null) return;
 
@@ -103,7 +103,7 @@ namespace WarRegions.Core.Engine
             }
             else
             {
-                var call = new DelayedCall(action, delay);
+                var call = new DelayedCal(action, delay);
                 lock (_callsLock)
                 {
                     _pendingCalls.Add(call);
@@ -194,7 +194,7 @@ namespace WarRegions.Core.Engine
             _gameThread = null;
         }
 
-        private void UpdateDelayedCalls()
+        private void Updates()
         {
             // Merge pending into active
             lock (_callsLock)
@@ -230,12 +230,12 @@ namespace WarRegions.Core.Engine
             }
         }
 
-        private class DelayedCall
+        private class DelayedCal
         {
             private readonly Action _action;
             private float _remainingTime;
 
-            public DelayedCall(Action action, float delay)
+            public DelayedCal(Action action, float delay)
             {
                 _action = action ?? throw new ArgumentNullException(nameof(action));
                 _remainingTime = delay;

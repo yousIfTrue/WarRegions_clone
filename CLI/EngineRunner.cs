@@ -178,7 +178,7 @@ namespace WarRegions.CLI
                                 }
                                 var msg = string.Join(" ", parts.Skip(2));
                                 Core.Engine.Debug.Log($"Scheduling delayed log in {sec} seconds: {msg}");
-                                Core.Engine.GameEngine.Instance.DelayedCall(() => Core.Engine.Debug.Log($"[delayed] {msg}"), sec);
+                                Core.Engine.GameEngine.Instance.DelayedCal(() => Core.Engine.Debug.Log($"[delayed] {msg}"), sec);
                                 break;
                             }
                         case "time":
