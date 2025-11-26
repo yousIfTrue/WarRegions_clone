@@ -24,9 +24,9 @@
     <Using Include="WarRegions.Presentation.Interface3D.Scripts.ViewManager3D" Alias="ViewManager3D" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <!-- ربط ملفات ViewManagers -->
     <Compile Include="../Presentation/Interface2D/Scripts/ViewManager2D.cs" Link="ViewManagers/ViewManager2D.cs" />
     <Compile Include="../Presentation/Interface3D/Scripts/ViewManager3D.cs" Link="ViewManagers/ViewManager3D.cs" />
-  </ItemGroup>
+  </ItemGroup> -->
 </Project>
