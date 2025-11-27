@@ -333,6 +333,7 @@
                 }
                 
                 return false;
+            }
 //                 {level.Description} were down
             public string GetLevelSummary(LevelData level)
             {
