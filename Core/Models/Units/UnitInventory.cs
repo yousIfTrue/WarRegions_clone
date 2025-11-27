@@ -185,7 +185,7 @@
                 return targetDeck.RemoveUnit(unit);
             }
             
-            public List<UnitCard> GetUnitsNotInDeck(string deckName = null)
+            public List<UnitCard> GetUnitsNotInDeck(string deckName = "unknown")
             {
                 var targetDeck = deckName == null ? ActiveDeck : 
                                Decks.FirstOrDefault(d => d.DeckName.Equals(deckName, StringComparison.OrdinalIgnoreCase));

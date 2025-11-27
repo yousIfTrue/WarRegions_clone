@@ -13,6 +13,18 @@ namespace WarRegions.Core.Models.Level
         public int GoldReward { get; set; } = 50;
         public int TurnsLimit { get; set; } = 30;
         // constructor يأخذ 4 معاملات (كما يتوقع LevelManager)
+        
+            // ✅ إضافة طرق مساعدة
+        public bool IsPositionValid(int x, int y)
+        {
+            return x >= 0 && x < MapWidth && y >= 0 && y < MapHeight;
+        }
+        
+        public int GetTotalRegions()
+        {
+            return MapWidth * MapHeight;
+        }
+            
         public LevelData(string levelName, string AIBehavior, int width, int height)
         {
             this.LevelName = levelName;
@@ -25,7 +37,13 @@ namespace WarRegions.Core.Models.Level
             this.SilverReward = 100;
             this.GoldReward = 10;
             this.TurnsLimit = 20;
+
         }
+        public LevelData() 
+        {
+            
+        }
+        
         public class VictoryCondition
         {
             public string Type { get; set; } = "eliminate_all";
@@ -33,20 +51,6 @@ namespace WarRegions.Core.Models.Level
             public int RequiredCount { get; set; } = 0;
             public int TimeLimit { get; set; } = 0;
             
-            // ✅ إضافة طرق مساعدة
-            public bool IsPositionValid(int x, int y)
-            {
-                return x >= 0 && x < MapWidth && y >= 0 && y < MapHeight;
-            }
-            public LevelData() 
-            {
-                
-            }
-            public int GetTotalRegions()
-            {
-                return MapWidth * MapHeight;
-            }
-
             public VictoryCondition() { }
             
             public VictoryCondition(string type, string target = "enemy_units", int requiredCount = 0)
