@@ -47,6 +47,15 @@
                 GoldAmount = goldAmount;
             }
             
+            public static Transaction CreateIncome(string playerId, int amount, string source)
+            {
+                return new Transaction(playerId, TransactionType.Income, amount)
+                {
+                    Description = $"Income from {source}",
+                    SilverAmount = amount
+                };
+            }
+
             public static Transaction CreatePurchase(string playerId, string itemName, int silverCost, int goldCost = 0)
             {
                 return new Transaction(playerId, TransactionType.Purchase, silverCost, goldCost)

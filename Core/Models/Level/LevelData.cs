@@ -66,7 +66,21 @@ namespace WarRegions.Core.Models.Level
                         return false;
                 }
             }
-            
+        
+            // constructor يأخذ 4 معاملات (كما يتوقع LevelManager)
+            public LevelData(string levelName, string AIBehavior, int width, int height)
+            {
+                this.LevelName = levelName;
+                this.AIBehavior = AIBehavior; 
+                this.MapWidth = width;
+                this.MapHeight = height;
+        
+                // قيم افتراضية للخصائص الأخرى
+                this.AIDifficulty = "medium";
+                this.SilverReward = 100;
+                this.GoldReward = 10;
+                this.TurnsLimit = 20;
+            }
             private bool CheckEliminateAll(GameState gameState)
             {
                 // التصحيح: استخدام اللاعب البشري (المفترض أنه الأول)

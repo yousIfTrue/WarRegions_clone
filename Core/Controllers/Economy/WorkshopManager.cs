@@ -432,7 +432,7 @@
         
         public class UpgradeResult
         {
-            public bool Success { get; set; }
+            public bool IsSuccessful { get; set; }
             public string Message { get; set; }
             public UnitCard UpgradedUnit { get; set; }
             public int NewLevel { get; set; }
@@ -442,7 +442,7 @@
             
             public UpgradeResult()
             {
-                Success = false;
+                IsSuccessful = false;
                 Message = string.Empty;
             }
         }

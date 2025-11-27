@@ -28,7 +28,7 @@
             public LevelData LoadLevel(string levelId)
             {
                 // Check if level is already loaded
-                var existingLevel = _loadedLevels.FirstOrDefault(l => l.LevelId == levelId);
+                var existingLevel = _loadedLevels.FirstOrDefault(l => l.LevelName == levelId);
                 if (existingLevel != null)
                 {
                     Console.WriteLine($"[LEVEL] Level {levelId} already loaded from cache");
@@ -77,7 +77,7 @@
                     8, 6
                 );
                 
-                defaultLevel.LevelId = levelId;
+                defaultLevel.LevelName = levelId;
                 defaultLevel.AIDifficulty = "medium";
                 defaultLevel.AIBehavior = "balanced";
                 defaultLevel.SilverReward = 200;
@@ -134,7 +134,7 @@
                         Directory.CreateDirectory(_levelsDirectory);
                     }
                     
-                    string filePath = Path.Combine(_levelsDirectory, $"{levelData.LevelId}.json");
+                    string filePath = Path.Combine(_levelsDirectory, $"{levelData.LevelName}.json");
                     
                     var options = new JsonSerializerOptions
                     {
@@ -157,7 +157,7 @@
             {
                 var newLevel = new LevelData(levelName, description, width, height)
                 {
-                    LevelId = $"level_{DateTime.Now:yyyyMMddHHmmss}",
+                    LevelName = $"level_{DateTime.Now:yyyyMMddHHmmss}",
                     AIDifficulty = "medium",
                     AIBehavior = "balanced",
                     SilverReward = 150,
@@ -173,7 +173,7 @@
             
             public void UnlockLevel(string levelId, Player player)
             {
-                var level = _loadedLevels.FirstOrDefault(l => l.LevelId == levelId);
+                var level = _loadedLevels.FirstOrDefault(l => l.LevelName == levelId);
                 if (level != null)
                 {
                     level.IsUnlocked = true;
@@ -183,7 +183,7 @@
             
             public void CompleteLevel(string levelId, Player player, int turnsUsed, bool perfectVictory = false)
             {
-                var level = _loadedLevels.FirstOrDefault(l => l.LevelId == levelId);
+                var level = _loadedLevels.FirstOrDefault(l => l.LevelName == levelId);
                 if (level != null)
                 {
                     level.CalculateRewards(player, turnsUsed, perfectVictory);
@@ -207,7 +207,7 @@
                         if (int.TryParse(levelNumberStr, out int levelNumber))
                         {
                             string nextLevelId = $"level_{levelNumber + 1:00}";
-                            var nextLevel = _loadedLevels.FirstOrDefault(l => l.LevelId == nextLevelId);
+                            var nextLevel = _loadedLevels.FirstOrDefault(l => l.LevelName == nextLevelId);
                             if (nextLevel != null)
                             {
                                 nextLevel.IsUnlocked = true;
@@ -226,7 +226,7 @@
             {
                 return _loadedLevels
                     .Where(level => level.IsUnlocked || level.MeetsRequirements(player))
-                    .OrderBy(level => level.LevelId)
+                    .OrderBy(level => level.LevelName)
                     .ToList();
             }
             
@@ -234,7 +234,7 @@
             {
                 return _loadedLevels
                     .Where(level => level.IsCompleted)
-                    .OrderBy(level => level.LevelId)
+                    .OrderBy(level => level.LevelName)
                     .ToList();
             }
             
@@ -294,7 +294,7 @@
                 var army = gameState.Armies.FirstOrDefault(a => a.Owner == owner && a.CurrentRegion == region);
                 if (army == null)
                 {
-                    army = new Army(owner, $"{owner.PlayerName} Reinforcements");
+                    army = new Army($"{owner.PlayerName} Reinforcements", owner);
                     army.CurrentRegion = region;
                     region.OccupyingArmy = army;
                     gameState.Armies.Add(army);
@@ -333,23 +333,21 @@
                 }
                 
                 return false;
-            }
-            
+//                 {level.Description} were down
             public string GetLevelSummary(LevelData level)
             {
                 return $"""
-                {level.LevelName}
-                {level.Description}
+                {levelData.LevelName}
                 
-                Map Size: {level.MapWidth}x{level.MapHeight}
-                AI: {level.AIDifficulty} ({level.AIBehavior})
-                Victory: {level.VictoryCondition.GetDescription()}
-                Turns: {level.TurnsLimit}
-                Reward: {level.SilverReward} silver, {level.GoldReward} gold
+                Map Size: {LevelData.MapWidth}x{LevelData.MapHeight}
+                AI: {LevelData.AIDifficulty} ({LevelData.AIBehavior})
+                Victory: {LevelData.VictoryCondition.GetDescription()}
+                Turns: {LevelData.TurnsLimit}
+                Reward: {LevelData.SilverReward} silver, {LevelData.GoldReward} gold
                 
-                Player Start: {level.PlayerSpawnPoints.Count} units
-                Enemy Start: {level.EnemySpawnPoints.Count} units
-                Reinforcements: {level.PlayerSpawnPoints.Count(sp => sp.IsReinforcement) + level.EnemySpawnPoints.Count(sp => sp.IsReinforcement)}
+                Player Start: {LevelData.PlayerSpawnPoints.Count} units
+                Enemy Start: {LevelData.EnemySpawnPoints.Count} units
+                Reinforcements: {LevelData.PlayerSpawnPoints.Count(sp => sp.IsReinforcement) + LevelData.EnemySpawnPoints.Count(sp => sp.IsReinforcement)}
                 """;
             }
             

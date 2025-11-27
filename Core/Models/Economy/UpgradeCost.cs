@@ -228,7 +228,7 @@
                 {
                     return new TransactionResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = "Upgrade requirements not met"
                     };
                 }
@@ -239,7 +239,7 @@
                 {
                     return new TransactionResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = $"Cannot afford upgrade! Need {silverCost} silver and {goldCost} gold"
                     };
                 }
@@ -271,7 +271,7 @@
                 
                 return new TransactionResult
                 {
-                    Success = true,
+                    IsSuccessful = true,
                     Message = $"Upgraded {UpgradeName} to level {targetLevel} for {silverCost} silver and {goldCost} gold",
                     SilverSpent = silverCost,
                     GoldSpent = goldCost
@@ -292,7 +292,7 @@
                 {
                     return new TransactionResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = "Instant completion not available for this upgrade"
                     };
                 }
@@ -303,7 +303,7 @@
                 {
                     return new TransactionResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = $"Need {goldCost} gold for instant completion"
                     };
                 }

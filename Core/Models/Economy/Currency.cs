@@ -41,7 +41,7 @@
                 return player.SilverCoins >= silverCost && player.GoldCoins >= goldCost;
             }
             
-            public static TransactionResult SpendCurrency(Player player, int silverCost, int goldCost = 0, string reason = "")
+            public static TransactionResult SpendCurrency(Player player,string reason = "", int silverCost, int goldCost = 0 )
             {
                 if (!CanAfford(player, silverCost, goldCost))
                 {
