@@ -12,24 +12,36 @@ namespace WarRegions.Core.Models.Level
         public int SilverReward { get; set; } = 500;
         public int GoldReward { get; set; } = 50;
         public int TurnsLimit { get; set; } = 30;
+        // constructor يأخذ 4 معاملات (كما يتوقع LevelManager)
+        public LevelData(string levelName, string AIBehavior, int width, int height)
+        {
+            this.LevelName = levelName;
+            this.AIBehavior = AIBehavior; 
+            this.MapWidth = width;
+            this.MapHeight = height;
+        
+            // قيم افتراضية للخصائص الأخرى
+            this.AIDifficulty = "medium";
+            this.SilverReward = 100;
+            this.GoldReward = 10;
+            this.TurnsLimit = 20;
+        }
         public class VictoryCondition
         {
             public string Type { get; set; } = "eliminate_all";
             public string Target { get; set; } = "enemy_units";
             public int RequiredCount { get; set; } = 0;
             public int TimeLimit { get; set; } = 0;
-            // ✅ إضافة الخصائص المطلوبة
-            public int MapWidth { get; set; } = 10;
-            public int MapHeight { get; set; } = 8;
-            public string AIDifficulty { get; set; } = "normal";
-            public string AIBehavior { get; set; } = "aggressive";
-        
+            
             // ✅ إضافة طرق مساعدة
             public bool IsPositionValid(int x, int y)
             {
                 return x >= 0 && x < MapWidth && y >= 0 && y < MapHeight;
             }
-        
+            public LevelData() 
+            {
+                
+            }
             public int GetTotalRegions()
             {
                 return MapWidth * MapHeight;
@@ -66,21 +78,7 @@ namespace WarRegions.Core.Models.Level
                         return false;
                 }
             }
-        
-            // constructor يأخذ 4 معاملات (كما يتوقع LevelManager)
-            public LevelData(string levelName, string AIBehavior, int width, int height)
-            {
-                this.LevelName = levelName;
-                this.AIBehavior = AIBehavior; 
-                this.MapWidth = width;
-                this.MapHeight = height;
-        
-                // قيم افتراضية للخصائص الأخرى
-                this.AIDifficulty = "medium";
-                this.SilverReward = 100;
-                this.GoldReward = 10;
-                this.TurnsLimit = 20;
-            }
+            
             private bool CheckEliminateAll(GameState gameState)
             {
                 // التصحيح: استخدام اللاعب البشري (المفترض أنه الأول)
