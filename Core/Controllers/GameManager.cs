@@ -456,6 +456,7 @@ namespace WarRegions.Core.Controllers
         public void ShowMessage(string message) { Console.WriteLine($"[Simple3D] {message}"); }
         public string GetUserInput() { return "simple_input"; }
     }
+}
     private IViewManager CreateViewManager2D()
     {
         try
@@ -510,6 +511,8 @@ namespace WarRegions.Core.Controllers
     // Fallback: استخدام الـ SimpleViewManager إذا فشل التحميل
     Console.WriteLine("[GAME] Using SimpleViewManager3D as fallback");
     return new SimpleViewManager3D();
+    }
+    
 }
             
     public enum ViewMode
