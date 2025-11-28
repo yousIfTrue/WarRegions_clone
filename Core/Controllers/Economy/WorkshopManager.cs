@@ -120,7 +120,7 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = true,
+                        IsSuccessful = true,
                         Message = "Workshop disabled - free upgrade applied (development mode)"
                     };
                 }
@@ -130,7 +130,7 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = "Upgrade not found"
                     };
                 }
@@ -139,7 +139,7 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = "Upgrade requirements not met"
                     };
                 }
@@ -148,7 +148,7 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = "Upgrade is on cooldown"
                     };
                 }
@@ -165,7 +165,7 @@
                     default:
                         return new UpgradeResult
                         {
-                            Success = false,
+                            IsSuccessful = false,
                             Message = "Unsupported upgrade type"
                         };
                 }
@@ -177,7 +177,7 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = "No target unit specified for unit upgrade"
                     };
                 }
@@ -189,18 +189,18 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = $"Cannot afford upgrade! Need {silverCost} silver and {goldCost} gold"
                     };
                 }
                 
                 // Process payment
                 var transaction = Currency.SpendCurrency(player, silverCost, goldCost, $"{upgrade.UpgradeName} for {targetUnit.UnitName}");
-                if (!transaction.Success)
+                if (!transaction.IsSuccessful)
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = transaction.Message
                     };
                 }
@@ -216,7 +216,7 @@
                 
                 return new UpgradeResult
                 {
-                    Success = true,
+                    IsSuccessful = true,
                     Message = $"Upgraded {targetUnit.UnitName} to level {targetUnit.Level}",
                     UpgradedUnit = targetUnit,
                     NewLevel = targetUnit.Level,
@@ -231,7 +231,7 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = "No target unit specified for special upgrade"
                     };
                 }
@@ -240,18 +240,18 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = $"Cannot afford special upgrade! Need {upgrade.SilverCost} silver and {upgrade.GoldCost} gold"
                     };
                 }
                 
                 // Process payment
                 var transaction = Currency.SpendCurrency(player, upgrade.SilverCost, upgrade.GoldCost, $"{upgrade.UpgradeName} for {targetUnit.UnitName}");
-                if (!transaction.Success)
+                if (!transaction.IsSuccessful)
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = transaction.Message
                     };
                 }
@@ -268,7 +268,7 @@
                 
                 return new UpgradeResult
                 {
-                    Success = true,
+                    IsSuccessful = true,
                     Message = $"Applied {upgrade.UpgradeName} to {targetUnit.UnitName}",
                     UpgradedUnit = targetUnit,
                     NewAbility = upgrade.NewAbility,
@@ -284,7 +284,7 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = "Upgrade not found"
                     };
                 }
@@ -293,7 +293,7 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = "This upgrade cannot be instantly completed"
                     };
                 }
@@ -303,7 +303,7 @@
                 {
                     return new UpgradeResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = $"Need {instantCost} gold for instant completion"
                     };
                 }
@@ -315,8 +315,8 @@
                 
                 return new UpgradeResult
                 {
-                    Success = transaction.Success,
-                    Message = transaction.Success ? $"Instantly completed {upgrade.UpgradeName}" : transaction.Message,
+                    IsSuccessful = transaction.IsSuccessful,
+                    Message = transaction.IsSuccessful ? $"Instantly completed {upgrade.UpgradeName}" : transaction.Message,
                     GoldCost = instantCost
                 };
             }

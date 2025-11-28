@@ -346,5 +346,16 @@
                 _mapHeight = 0;
                 Console.WriteLine("[TERRAIN] Map cleared");
             }
+            // ✅ أضف هذه الدوال:
+            public void SwitchViewMode()
+            {
+                Console.WriteLine("[TERRAIN] Switching view mode");
+            }
+
+            public void SwitchViewMode(string viewType)
+            {
+                Console.WriteLine($"[TERRAIN] Switching to {viewType} view");
+            }
+        
         }
     }

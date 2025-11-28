@@ -47,7 +47,7 @@
                 {
                     return new TransactionResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = $"Insufficient funds! Need {silverCost} silver and {goldCost} gold."
                     };
                 }
@@ -64,7 +64,7 @@
                 
                 return new TransactionResult
                 {
-                    Success = true,
+                    IsSuccessful = true,
                     Message = message,
                     SilverSpent = silverCost,
                     GoldSpent = goldCost
@@ -90,7 +90,7 @@
                 {
                     return new TransactionResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = $"Need at least {SilverToGoldRate} silver to convert to gold."
                     };
                 }
@@ -99,7 +99,7 @@
                 {
                     return new TransactionResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = $"Not enough silver! Have {player.SilverCoins}, need {silverAmount}."
                     };
                 }
@@ -117,7 +117,7 @@
                 
                 return new TransactionResult
                 {
-                    Success = true,
+                    IsSuccessful = true,
                     Message = message,
                     SilverSpent = silverAmount - silverRemainder,
                     GoldGained = goldGained
@@ -130,7 +130,7 @@
                 {
                     return new TransactionResult
                     {
-                        Success = false,
+                        IsSuccessful = false,
                         Message = $"Not enough gold! Have {player.GoldCoins}, need {goldAmount}."
                     };
                 }
@@ -146,7 +146,7 @@
                 
                 return new TransactionResult
                 {
-                    Success = true,
+                    IsSuccessful = true,
                     Message = message,
                     GoldSpent = goldAmount,
                     SilverGained = silverGained
@@ -168,7 +168,7 @@
             
             public static void ApplyDailyIncome(Player player, int regionsControlled)
             {
-                int baseIncome = CalculateBaseIncome(regionsControlled, player.LevelProgress);
+                int baseIncome = CalculateBaseIncome(regionsControlled, player.PlayerProgress);
                 int upkeepCost = CalculateUnitUpkeep(player.AvailableUnits);
                 int netIncome = baseIncome - upkeepCost;
                 
@@ -187,7 +187,7 @@
         
         public class TransactionResult
         {
-            public bool Success { get; set; }
+            public bool IsSuccessful { get; set; }
             public string Message { get; set; }
             public int SilverSpent { get; set; }
             public int GoldSpent { get; set; }
@@ -196,7 +196,7 @@
             
             public TransactionResult()
             {
-                Success = false;
+                IsSuccessful = false;
                 Message = string.Empty;
             }
         }

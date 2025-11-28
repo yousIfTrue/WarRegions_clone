@@ -10,14 +10,14 @@ namespace WarRegions.Core.Models
         public List<UnitCard> AvailableUnits { get; set; }
         public UnitDeck CurrentDeck { get; set; }
         
-        // ✅ التأكد من وجود LevelProgress
-        public int LevelProgress { get; set; } = 0;
+        // الخاصية الجديدة الموحدة
+        public PlayerProgress Progress { get; set; } = new PlayerProgress();
         
         // ✅ إضافة طريقة لحساب التقدم
-        public double GetLevelProgressPercentage()
+        public double GetPlayerProgressPercentage()
         {
             int expForNextLevel = Level * 100;
-            return expForNextLevel > 0 ? (double)LevelProgress / expForNextLevel * 100 : 0;
+            return expForNextLevel > 0 ? (double)PlayerProgress / expForNextLevel * 100 : 0;
         }
         // ✅ الخصائص الجديدة المطلوبة فقط
         public string PlayerId { get; set; } = Guid.NewGuid().ToString();

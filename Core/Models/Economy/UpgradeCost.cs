@@ -197,7 +197,7 @@
             
             public bool MeetsRequirements(Player player)
             {
-                if (player.LevelProgress < RequiredPlayerLevel)
+                if (player.PlayerProgress < RequiredPlayerLevel)
                 {
                     Console.WriteLine($"[UPGRADE] Requires player level {RequiredPlayerLevel}");
                     return false;
@@ -246,7 +246,7 @@
                 
                 // Process payment
                 var transaction = Currency.SpendCurrency(player, silverCost, goldCost, $"{UpgradeName} upgrade");
-                if (!transaction.Success)
+                if (!transaction.IsSuccessful)
                 {
                     return transaction;
                 }

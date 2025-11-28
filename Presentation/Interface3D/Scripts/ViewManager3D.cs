@@ -46,6 +46,17 @@ namespace WarRegions.Presentation.Interface3D.Scripts
             Debug.Log("Clearing 3D screen");
         }
 
+        // ✅ أضف هذه الدوال:
+        public void CleanScreen()
+        {
+            ClearScreen();
+        }
+
+        public void UpdateView()
+        {
+            Debug.Log("[ViewManager3D] Updating 3D view");
+            // منطق تحديث العرض لـ 3D
+        }
         public string GetUserInput()
         {
             return "user_input_3d";

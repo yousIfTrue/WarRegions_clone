@@ -48,7 +48,17 @@ namespace WarRegions.Presentation.Interface2D.Scripts
         {
             Debug.Log("Clearing 2D screen");
         }
-
+        public void CleanScreen()
+        {
+            // استخدم الدالة الحالية مع الاسم الجديد
+            ClearScreen();
+        }
+        public void UpdateView()
+        {
+            // منطق تحديث العرض لـ 2D
+            Debug.Log("[ViewManager2D] Updating 2D view");
+            // يمكنك إضافة منطق تحديث الواجهة هنا
+        }
         public string GetUserInput()
         {
             // TODO: تنفيذ الحصول على مدخلات المستخدم

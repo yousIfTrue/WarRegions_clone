@@ -238,7 +238,7 @@
                     .ToList();
             }
             
-            public LevelData GetLevelProgression(Player player)
+            public LevelData GetPlayerProgression(Player player)
             {
                 // Get the highest level the player should attempt next
                 var availableLevels = GetAvailableLevels(player);

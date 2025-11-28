@@ -8,7 +8,8 @@ namespace WarRegions.Core.Interfaces
         void RenderMap(List<Region> regions);
         void RenderArmyDetails(Army army);
         void ShowMessage(string message);
-        void ClearScreen();
+        void CleanScreen();  // ✅ غيرت من ClearScreen
+        void UpdateView();   // ✅ أضف هذه الدالة المطلوبة
         string GetUserInput();
     }
 }

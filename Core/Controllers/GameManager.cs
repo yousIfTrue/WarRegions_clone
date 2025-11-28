@@ -1,4 +1,7 @@
-
+;
+// أضف في بداية GameManager.cs (قبل namespace)
+using WarRegions.Presentation.Interface2D.Scripts;
+using WarRegions.Presentation.Interface3D.Scripts;
 namespace WarRegions.Core.Controllers
 {
     public class GameManager
@@ -9,7 +12,8 @@ namespace WarRegions.Core.Controllers
         // Game flow control
         public bool IsGameRunning { get; private set; }
         public bool IsPaused { get; private set; }
-        
+        private ViewManager2D _view2D;
+        private ViewManager3D _view3D
         // Managers
         private LevelManager _levelManager;
         private BattleCalculator _battleCalculator;
@@ -34,19 +38,53 @@ namespace WarRegions.Core.Controllers
             Console.WriteLine("[GAME] GameManager initialized");
         }
         
-        public void Initialize(ViewMode startMode = ViewMode.View2D)
+        // ✅ أضف هذه الدوال هنا - داخل كلاس GameManager:
+        public void SetViewMode(ViewMode newMode)
         {
-            // Set up view manager based on mode
-            SetViewMode(startMode);
+            CurrentViewManager?.CleanScreen();
             
-            // Apply development configuration
-            DevConfig.ApplyDevelopmentCheats(CurrentGame);  // ✅ صحيح
+            // استخدم Factory بدلاً من الـ Instance مباشرة
+            CurrentViewManager = newMode switch
+            {
+                ViewMode.View2D => CreateViewManager2D(),
+                ViewMode.View3D => CreateViewManager3D(),
+                _ => CreateViewManager2D()
+            };
             
-            Console.WriteLine($"[GAME] GameManager initialized with {startMode} view");
-            OnGameStart?.Invoke("Game initialized successfully");
+            if (!CurrentViewManager.IsInitialized)
+            {
+                CurrentViewManager.Initialize();
+            }
+            
+            Console.WriteLine($"[GAME] View mode set to: {newMode}");
         }
-        
-public void SetViewMode(ViewMode newMode)
+
+        private IViewManager CreateViewManager2D()
+        {
+            try
+            {
+                return ViewManager2D.Instance;
+            }
+            catch
+            {
+                // Fallback implementation
+                return new SimpleViewManager2D();
+            }
+        }
+
+        private IViewManager CreateViewManager3D()
+        {
+            try
+            {
+                return ViewManager3D.Instance;
+            }
+            catch
+            {
+                // Fallback implementation
+                return new SimpleViewManager3D();
+            }
+        }
+        public void SetViewMode(ViewMode newMode)
 {
     // Clean up current view manager if exists
     CurrentViewManager?.CleanScreen();
@@ -72,6 +110,19 @@ public void SetViewMode(ViewMode newMode)
 
     Console.WriteLine($"[GAME] View mode set to: {newMode}");
 }
+        public void Initialize(ViewMode startMode = ViewMode.View2D)
+        {
+            // Set up view manager based on mode
+            SetViewMode(startMode);
+            
+            // Apply development configuration
+            DevConfig.ApplyDevelopmentCheats(CurrentGame);  // ✅ صحيح
+            
+            Console.WriteLine($"[GAME] GameManager initialized with {startMode} view");
+            OnGameStart?.Invoke("Game initialized successfully");
+        }
+        
+
         
         public void StartNewGame(Player humanPlayer, string levelId = "level_01")
         {
@@ -381,7 +432,30 @@ public void SetViewMode(ViewMode newMode)
             Console.WriteLine("[GAME] GameManager disposed");
         }
     }
-    
+        
+    public class SimpleViewManager2D : IViewManager
+    {
+        public bool IsInitialized { get; private set; }
+        public void Initialize() { IsInitialized = true; Console.WriteLine("[Simple2D] Initialized"); }
+        public void CleanScreen() { Console.WriteLine("[Simple2D] Screen cleaned"); }
+        public void UpdateView() { Console.WriteLine("[Simple2D] View updated"); }
+        public void RenderMap(List<Region> regions) { Console.WriteLine($"[Simple2D] Rendering {regions.Count} regions"); }
+        public void RenderArmyDetails(Army army) { Console.WriteLine($"[Simple2D] Rendering {army.ArmyName}"); }
+        public void ShowMessage(string message) { Console.WriteLine($"[Simple2D] {message}"); }
+        public string GetUserInput() { return "simple_input"; }
+    }
+
+    public class SimpleViewManager3D : IViewManager
+    {
+        public bool IsInitialized { get; private set; }
+        public void Initialize() { IsInitialized = true; Console.WriteLine("[Simple3D] Initialized"); }
+        public void CleanScreen() { Console.WriteLine("[Simple3D] Screen cleaned"); }
+        public void UpdateView() { Console.WriteLine("[Simple3D] View updated"); }
+        public void RenderMap(List<Region> regions) { Console.WriteLine($"[Simple3D] Rendering {regions.Count} regions"); }
+        public void RenderArmyDetails(Army army) { Console.WriteLine($"[Simple3D] Rendering {army.ArmyName}"); }
+        public void ShowMessage(string message) { Console.WriteLine($"[Simple3D] {message}"); }
+        public string GetUserInput() { return "simple_input"; }
+    }
     public enum ViewMode
     {
         View2D,

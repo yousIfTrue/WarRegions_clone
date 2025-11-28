@@ -220,7 +220,71 @@
                 Console.WriteLine("===========================");
             }
         }
+
+        public class TransactionResult
+        {
+            public bool IsSuccessful { get; set; }
+            public string Message { get; set; }
+            public int SilverSpent { get; set; }
+            public int GoldSpent { get; set; }
+            public int RemainingSilver { get; set; }
+            public int RemainingGold { get; set; }
         
+            // Methods for easy creation
+           public static TransactionResult IsSuccessful(string message = "", int silverSpent = 0, int goldSpent = 0)
+            {
+                return new TransactionResult 
+                { 
+                    IsSuccessful = true, 
+                    Message = message,
+                    SilverSpent = silverSpent,
+                    GoldSpent = goldSpent
+                };
+            }
+        
+            public static TransactionResult Failure(string message)
+            {
+                return new TransactionResult 
+                { 
+                    IsSuccessful = false, 
+                    Message = message 
+                };
+            }
+        }
+
+        public static class Currency
+        {
+            public static TransactionResult SpendCurrency(Player player, int silverCost, int goldCost = 0, string reason = "")
+            {
+                if (!CanAfford(player, silverCost, goldCost))
+                {
+                    return TransactionResult.Failure($"Insufficient funds! Need {silverCost} silver and {goldCost} gold.");
+                }
+            
+                player.SilverCoins -= silverCost;
+                player.GoldCoins -= goldCost;
+            
+                string message = $"Spent {silverCost} silver";
+                if (goldCost > 0) message += $" and {goldCost} gold";
+                if (!string.IsNullOrEmpty(reason)) message += $" for {reason}";
+                message += $". Remaining: {player.SilverCoins}S {player.GoldCoins}G";
+            
+                Console.WriteLine($"[ECONOMY] {message}");
+            
+                return TransactionResult.Success(
+                    message: message,
+                    silverSpent: silverCost,
+                    goldSpent: goldCost
+                );
+            }
+        
+            public static bool CanAfford(Player player, int silverCost, int goldCost = 0)
+            {
+                return player.SilverCoins >= silverCost && player.GoldCoins >= goldCost;
+            }
+        }
+
+
         public enum TransactionType
         {
             Purchase,   // Buying items/units

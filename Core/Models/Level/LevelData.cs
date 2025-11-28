@@ -13,7 +13,12 @@ namespace WarRegions.Core.Models.Level
         public int GoldReward { get; set; } = 50;
         public int TurnsLimit { get; set; } = 30;
         // constructor يأخذ 4 معاملات (كما يتوقع LevelManager)
-        
+        // أضف هذه الخصائص لتتوافق مع LevelManager
+    public bool IsUnlocked { get; set; } = false;
+    public bool IsCompleted { get; set; } = false;
+    public string LevelId { get; set; } = "level_1";
+    public string Description { get; set; } = "Default level description";
+    
             // ✅ إضافة طرق مساعدة
         public bool IsPositionValid(int x, int y)
         {
@@ -43,6 +48,54 @@ namespace WarRegions.Core.Models.Level
         {
             
         }
+        
+           public List<Vector2> PlayerSpawnPoints { get; set; } = new();
+    public List<Vector2> EnemySpawnPoints { get; set; } = new();
+    
+    public void AddPlayerSpawnPoint(Vector2 point) => PlayerSpawnPoints.Add(point);
+    public void AddEnemySpawnPoint(Vector2 point) => EnemySpawnPoints.Add(point);
+    
+    public bool IsCompleted(PlayerProgress progress) 
+    {
+        // التفعيل
+            if (progress == null) 
+        return false;
+
+    // إذا كان المستوى الأول، يكون مفتوح دائماً
+    if (LevelId == "level_1" || LevelName == "First Battle")
+        return true;
+
+    // إذا كان المستوى مذكور في قائمة المستويات المفتوحة
+    if (progress.UnlockedLevels?.Contains(LevelId) == true)
+        return true;
+
+    // فتح المستوى إذا اكتمل المستوى السابق
+    var previousLevel = GetPreviousLevel();
+    if (previousLevel != null && progress.CompletedLevels?.Contains(previousLevel.LevelId) == true)
+        return true;
+
+    // في وضع التطوير، جميع المستويات مفتوحة
+    return DevConfig.DebugMode;
+    }
+    public bool IsCompleted(PlayerProgress progress) 
+    {
+       // الاكمال
+        if (progress == null) 
+        return false;
+
+        // التحقق إذا كان المستوى مذكور في قائمة المستويات المكتملة
+        return progress.CompletedLevels?.Contains(LevelId) == true;
+    }
+    public bool MeetsRequirements(PlayerProgress progress)
+    {
+        // المتطلبات
+        
+    }
+    public Reward CalculateRewards() 
+    {
+        // المكافئات
+        
+    }
         
         public class VictoryCondition
         {

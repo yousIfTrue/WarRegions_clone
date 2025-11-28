@@ -29,6 +29,10 @@
             public double GetCombatStrength() => 1.0; // مؤقت - يمكن تحسينه لاحقاً
             public Player Owner { get; set; }
             
+            public int Attack { get; set; }
+            public int Defense { get; set; }
+            public int Health { get; set; }
+            
             public UnitCard()
             {
                 UnitId = Guid.NewGuid().ToString();
