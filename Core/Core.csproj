@@ -5,8 +5,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   
-  <!-- أضف هذه الـ reference -->
-  <ItemGroup>
-    <ProjectReference Include="..\Presentation\Presentation.csproj" />
-  </ItemGroup>
 </Project>

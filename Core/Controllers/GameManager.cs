@@ -1,5 +1,6 @@
 ;
 // أضف في بداية GameManager.cs (قبل namespace)
+using System.Reflection;
 using WarRegions.Presentation.Interface2D.Scripts;
 using WarRegions.Presentation.Interface3D.Scripts;
 namespace WarRegions.Core.Controllers
@@ -456,6 +457,62 @@ namespace WarRegions.Core.Controllers
         public void ShowMessage(string message) { Console.WriteLine($"[Simple3D] {message}"); }
         public string GetUserInput() { return "simple_input"; }
     }
+    private IViewManager CreateViewManager2D()
+    {
+        try
+        {
+            // المحاولة الأولى: استخدام Reflection لتحميل ViewManager2D الحقيقي
+            var assembly = Assembly.Load("Presentation");
+            var type = assembly.GetType("WarRegions.Presentation.Interface2D.Scripts.ViewManager2D");
+            if (type != null)
+            {
+                var instanceProperty = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
+                if (instanceProperty != null)
+                {
+                    var realViewManager = (IViewManager)instanceProperty.GetValue(null);
+                    Console.WriteLine("[GAME] Loaded real ViewManager2D from Presentation");
+                    return realViewManager;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[GAME] Failed to load ViewManager2D: {ex.Message}");
+        }
+    
+        // Fallback: استخدام الـ SimpleViewManager إذا فشل التحميل
+        Console.WriteLine("[GAME] Using SimpleViewManager2D as fallback");
+        return new SimpleViewManager2D();
+    }
+
+    private IViewManager CreateViewManager3D()
+    {
+        try
+       {
+            // المحاولة الأولى: استخدام Reflection لتحميل ViewManager3D الحقيقي
+            var assembly = Assembly.Load("Presentation");
+            var type = assembly.GetType("WarRegions.Presentation.Interface3D.Scripts.ViewManager3D");
+        if (type != null)
+        {
+            var instanceProperty = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
+            if (instanceProperty != null)
+            {
+                var realViewManager = (IViewManager)instanceProperty.GetValue(null);
+                Console.WriteLine("[GAME] Loaded real ViewManager3D from Presentation");
+                return realViewManager;
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"[GAME] Failed to load ViewManager3D: {ex.Message}");
+    }
+    
+    // Fallback: استخدام الـ SimpleViewManager إذا فشل التحميل
+    Console.WriteLine("[GAME] Using SimpleViewManager3D as fallback");
+    return new SimpleViewManager3D();
+}
+            
     public enum ViewMode
     {
         View2D,
