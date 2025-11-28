@@ -84,32 +84,7 @@ namespace WarRegions.Core.Controllers
                 return new SimpleViewManager3D();
             }
         }
-        public void SetViewMode(ViewMode newMode)
-{
-    // Clean up current view manager if exists
-    CurrentViewManager?.CleanScreen();
-    
-    // Initialize the appropriate view manager
-    CurrentViewManager = newMode switch
-    {
-        ViewMode.View2D => ViewManager2D.Instance,
-        ViewMode.View3D => ViewManager3D.Instance,
-        _ => ViewManager2D.Instance
-    };
-    
-    // Initialize only if not already initialized
-    if (!CurrentViewManager.IsInitialized)
-    {
-        CurrentViewManager.Initialize();
-    }
-    
-    // Reinitialize terrain for the new view mode
-    // ✅ صحيح - إنشاء instance جديد
-    var terrainManager = new TerrainManager();
-    terrainManager.SwitchViewMode(newMode);
-
-    Console.WriteLine($"[GAME] View mode set to: {newMode}");
-}
+        
         public void Initialize(ViewMode startMode = ViewMode.View2D)
         {
             // Set up view manager based on mode
@@ -426,38 +401,7 @@ namespace WarRegions.Core.Controllers
                 Game Over: {CurrentGame.IsGameOver}
                 """;
         }
-        
-        public void Dispose()
-        {
-            Console.WriteLine("[GAME] GameManager disposed");
-        }
-    }
-        
-    public class SimpleViewManager2D : IViewManager
-    {
-        public bool IsInitialized { get; private set; }
-        public void Initialize() { IsInitialized = true; Console.WriteLine("[Simple2D] Initialized"); }
-        public void CleanScreen() { Console.WriteLine("[Simple2D] Screen cleaned"); }
-        public void UpdateView() { Console.WriteLine("[Simple2D] View updated"); }
-        public void RenderMap(List<Region> regions) { Console.WriteLine($"[Simple2D] Rendering {regions.Count} regions"); }
-        public void RenderArmyDetails(Army army) { Console.WriteLine($"[Simple2D] Rendering {army.ArmyName}"); }
-        public void ShowMessage(string message) { Console.WriteLine($"[Simple2D] {message}"); }
-        public string GetUserInput() { return "simple_input"; }
-    }
-
-    public class SimpleViewManager3D : IViewManager
-    {
-        public bool IsInitialized { get; private set; }
-        public void Initialize() { IsInitialized = true; Console.WriteLine("[Simple3D] Initialized"); }
-        public void CleanScreen() { Console.WriteLine("[Simple3D] Screen cleaned"); }
-        public void UpdateView() { Console.WriteLine("[Simple3D] View updated"); }
-        public void RenderMap(List<Region> regions) { Console.WriteLine($"[Simple3D] Rendering {regions.Count} regions"); }
-        public void RenderArmyDetails(Army army) { Console.WriteLine($"[Simple3D] Rendering {army.ArmyName}"); }
-        public void ShowMessage(string message) { Console.WriteLine($"[Simple3D] {message}"); }
-        public string GetUserInput() { return "simple_input"; }
-    }
-}
-    private IViewManager CreateViewManager2D()
+                private IViewManager CreateViewManager2D()
     {
         try
         {
@@ -488,33 +432,64 @@ namespace WarRegions.Core.Controllers
     private IViewManager CreateViewManager3D()
     {
         try
-       {
-            // المحاولة الأولى: استخدام Reflection لتحميل ViewManager3D الحقيقي
-            var assembly = Assembly.Load("Presentation");
-            var type = assembly.GetType("WarRegions.Presentation.Interface3D.Scripts.ViewManager3D");
-        if (type != null)
         {
-            var instanceProperty = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
-            if (instanceProperty != null)
+                // المحاولة الأولى: استخدام Reflection لتحميل ViewManager3D الحقيقي
+                var assembly = Assembly.Load("Presentation");
+                var type = assembly.GetType("WarRegions.Presentation.Interface3D.Scripts.ViewManager3D");
+            if (type != null)
             {
-                var realViewManager = (IViewManager)instanceProperty.GetValue(null);
-                Console.WriteLine("[GAME] Loaded real ViewManager3D from Presentation");
-                return realViewManager;
+                var instanceProperty = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
+                if (instanceProperty != null)
+                {
+                    var realViewManager = (IViewManager)instanceProperty.GetValue(null);
+                    Console.WriteLine("[GAME] Loaded real ViewManager3D from Presentation");
+                    return realViewManager;
+                }
             }
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[GAME] Failed to load ViewManager3D: {ex.Message}");
+        }
+    
+        // Fallback: استخدام الـ SimpleViewManager إذا فشل التحميل
+        Console.WriteLine("[GAME] Using SimpleViewManager3D as fallback");
+        return new SimpleViewManager3D();
     }
-    catch (Exception ex)
+        public void Dispose()
+        {
+            Console.WriteLine("[GAME] GameManager disposed");
+        }
+    }
+        
+    public class SimpleViewManager2D : IViewManager
     {
-        Console.WriteLine($"[GAME] Failed to load ViewManager3D: {ex.Message}");
+        public bool IsInitialized { get; private set; }
+        public void Initialize() { IsInitialized = true; Console.WriteLine("[Simple2D] Initialized"); }
+        public void CleanScreen() { Console.WriteLine("[Simple2D] Screen cleaned"); }
+        public void UpdateView() { Console.WriteLine("[Simple2D] View updated"); }
+        public void RenderMap(List<Region> regions) { Console.WriteLine($"[Simple2D] Rendering {regions.Count} regions"); }
+        public void RenderArmyDetails(Army army) { Console.WriteLine($"[Simple2D] Rendering {army.ArmyName}"); }
+        public void ShowMessage(string message) { Console.WriteLine($"[Simple2D] {message}"); }
+        public string GetUserInput() { return "simple_input"; }
     }
-    
-    // Fallback: استخدام الـ SimpleViewManager إذا فشل التحميل
-    Console.WriteLine("[GAME] Using SimpleViewManager3D as fallback");
-    return new SimpleViewManager3D();
+
+    public class SimpleViewManager3D : IViewManager
+    {
+        public bool IsInitialized { get; private set; }
+        public void Initialize() { IsInitialized = true; Console.WriteLine("[Simple3D] Initialized"); }
+        public void CleanScreen() { Console.WriteLine("[Simple3D] Screen cleaned"); }
+        public void UpdateView() { Console.WriteLine("[Simple3D] View updated"); }
+        public void RenderMap(List<Region> regions) { Console.WriteLine($"[Simple3D] Rendering {regions.Count} regions"); }
+        public void RenderArmyDetails(Army army) { Console.WriteLine($"[Simple3D] Rendering {army.ArmyName}"); }
+        public void ShowMessage(string message) { Console.WriteLine($"[Simple3D] {message}"); }
+        public string GetUserInput() { return "simple_input"; }
     }
+
+
     
-}
-            
+
+        
     public enum ViewMode
     {
         View2D,
