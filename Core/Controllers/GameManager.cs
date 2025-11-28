@@ -1,4 +1,4 @@
-;
+
 // أضف في بداية GameManager.cs (قبل namespace)
 using System.Reflection;
 using WarRegions.Presentation.Interface2D.Scripts;
@@ -13,8 +13,7 @@ namespace WarRegions.Core.Controllers
         // Game flow control
         public bool IsGameRunning { get; private set; }
         public bool IsPaused { get; private set; }
-        private ViewManager2D _view2D;
-        private ViewManager3D _view3D
+        
         // Managers
         private LevelManager _levelManager;
         private BattleCalculator _battleCalculator;
