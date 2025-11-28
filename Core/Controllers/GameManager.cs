@@ -104,10 +104,13 @@ namespace WarRegions.Core.Controllers
             try
             {
                 // Load level data
-                var level = _levelManager.LoadLevel(levelId);
+                // var level = _levelManager.LoadLevel(levelId);
+                var level = _levelManager.LoadLevel("level_01");
                 if (level == null)
                 {
                     Console.WriteLine($"[GAME] Failed to load level: {levelId}");
+                    var levelFiles = Directory.GetFiles("Levels", "*.json");
+                    Console.WriteLine($"Available level files: {string.Join(", ", levelFiles)}");
                     return;
                 }
                 
@@ -461,35 +464,7 @@ namespace WarRegions.Core.Controllers
             Console.WriteLine("[GAME] GameManager disposed");
         }
     }
-        
-    public class SimpleViewManager2D : IViewManager
-    {
-        public bool IsInitialized { get; private set; }
-        public void Initialize() { IsInitialized = true; Console.WriteLine("[Simple2D] Initialized"); }
-        public void CleanScreen() { Console.WriteLine("[Simple2D] Screen cleaned"); }
-        public void UpdateView() { Console.WriteLine("[Simple2D] View updated"); }
-        public void RenderMap(List<Region> regions) { Console.WriteLine($"[Simple2D] Rendering {regions.Count} regions"); }
-        public void RenderArmyDetails(Army army) { Console.WriteLine($"[Simple2D] Rendering {army.ArmyName}"); }
-        public void ShowMessage(string message) { Console.WriteLine($"[Simple2D] {message}"); }
-        public string GetUserInput() { return "simple_input"; }
-    }
-
-    public class SimpleViewManager3D : IViewManager
-    {
-        public bool IsInitialized { get; private set; }
-        public void Initialize() { IsInitialized = true; Console.WriteLine("[Simple3D] Initialized"); }
-        public void CleanScreen() { Console.WriteLine("[Simple3D] Screen cleaned"); }
-        public void UpdateView() { Console.WriteLine("[Simple3D] View updated"); }
-        public void RenderMap(List<Region> regions) { Console.WriteLine($"[Simple3D] Rendering {regions.Count} regions"); }
-        public void RenderArmyDetails(Army army) { Console.WriteLine($"[Simple3D] Rendering {army.ArmyName}"); }
-        public void ShowMessage(string message) { Console.WriteLine($"[Simple3D] {message}"); }
-        public string GetUserInput() { return "simple_input"; }
-    }
-
-
     
-
-        
     public enum ViewMode
     {
         View2D,

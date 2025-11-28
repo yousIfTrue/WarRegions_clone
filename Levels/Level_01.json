@@ -1,0 +1,31 @@
+{
+  "LevelId": "level_test",
+  "LevelName": "Test Battle",
+  "Description": "A simple test level for debugging",
+  "MapWidth": 6,
+  "MapHeight": 6,
+  "AIDifficulty": "easy",
+  "AIBehavior": "defensive",
+  "SilverReward": 200,
+  "GoldReward": 20,
+  "TurnsLimit": 15,
+  "RecommendedLevel": 1,
+  "RequiredPlayerLevel": 1,
+  "RequiredLevels": [],
+  "PlayerSpawnPoints": [
+    { "X": 1, "Y": 1 },
+    { "X": 1, "Y": 2 },
+    { "X": 2, "Y": 1 }
+  ],
+  "EnemySpawnPoints": [
+    { "X": 4, "Y": 4 },
+    { "X": 4, "Y": 5 },
+    { "X": 5, "Y": 4 }
+  ],
+  "VictoryCondition": {
+    "Type": "eliminate_all",
+    "Target": "enemy_units",
+    "RequiredCount": 0,
+    "TimeLimit": 0
+  }
+}
