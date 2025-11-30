@@ -346,4 +346,20 @@
                 """;
             }
         }
+    public class Reward
+    {
+        public int Silver { get; set; }
+        public int Gold { get; set; }
+        public int Experience { get; set; }
+        
+        public Reward() { }
+        
+        public Reward(int silver, int gold, int experience = 0)
+        {
+            Silver = silver;
+            Gold = gold;
+            Experience = experience;
+        }
+    }
+
     }
