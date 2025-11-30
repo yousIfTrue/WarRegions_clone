@@ -185,19 +185,4 @@
             }
         }
         
-        public class TransactionResult
-        {
-            public bool IsSuccessful { get; set; }
-            public string Message { get; set; }
-            public int SilverSpent { get; set; }
-            public int GoldSpent { get; set; }
-            public int SilverGained { get; set; }
-            public int GoldGained { get; set; }
-            
-            public TransactionResult()
-            {
-                IsSuccessful = false;
-                Message = string.Empty;
-            }
-        }
     }

@@ -377,7 +377,43 @@ namespace WarRegions.Core.Engine
 
                 return term1 + term2 + term3;
             }
+            // أضف في نهاية Transform.cs قبل آخر }
+            namespace WarRegions.Core.Engine
+{
+    public struct Vector2
+    {
+        public float x, y;
 
+        public Vector2(float x, float y) { this.x = x; this.y = y; }
+
+        public static Vector2 zero => new Vector2(0f, 0f);
+        public static Vector2 one => new Vector2(1f, 1f);
+        public static Vector2 up => new Vector2(0f, 1f);
+        public static Vector2 right => new Vector2(1f, 0f);
+
+        public float sqrMagnitude => x * x + y * y;
+        public float magnitude => (float)Math.Sqrt(sqrMagnitude);
+
+        public Vector2 Normalized()
+        {
+            var m = magnitude;
+            if (m == 0f) return zero;
+            return new Vector2(x / m, y / m);
+        }
+
+        public static Vector2 operator +(Vector2 a, Vector2 b) => new Vector2(a.x + b.x, a.y + b.y);
+        public static Vector2 operator -(Vector2 a, Vector2 b) => new Vector2(a.x - b.x, a.y - b.y);
+        public static Vector2 operator *(Vector2 a, float d) => new Vector2(a.x * d, a.y * d);
+        public static Vector2 operator *(float d, Vector2 a) => a * d;
+        public static Vector2 operator /(Vector2 a, float d) => new Vector2(a.x / d, a.y / d);
+
+        public override string ToString() => $"({x:F3}, {y:F3})";
+        
+        // إضافة خصائص X, Y للتوافق مع الكود الحالي
+        public float X => x;
+        public float Y => y;
+    }
+}
             public static Quaternion LookRotation(Vector3 forward, Vector3 up)
             {
                 // Very simple implementation to create a quaternion looking along forward with given up
@@ -423,3 +459,23 @@ namespace WarRegions.Core.Engine
         }
     }
 }
+
+
+/*
+            public struct Vector2
+            {
+                public float x, y;
+    
+                public Vector2(float x, float y) { this.x = x; this.y = y; }
+    
+                public static Vector2 zero => new Vector2(0f, 0f);
+                public static Vector2 one => new Vector2(1f, 1f);
+    
+                public float magnitude => (float)Math.Sqrt(x * x + y * y);
+    
+                public static Vector2 operator +(Vector2 a, Vector2 b) => new Vector2(a.x + b.x, a.y + b.y);
+                public static Vector2 operator -(Vector2 a, Vector2 b) => new Vector2(a.x - b.x, a.y - b.y);
+    
+                public override string ToString() => $"({x}, {y})";
+            }
+*/

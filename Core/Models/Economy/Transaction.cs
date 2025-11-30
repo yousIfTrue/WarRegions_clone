@@ -252,37 +252,7 @@
             }
         }
 
-        public static class Currency
-        {
-            public static TransactionResult SpendCurrency(Player player, int silverCost, int goldCost = 0, string reason = "")
-            {
-                if (!CanAfford(player, silverCost, goldCost))
-                {
-                    return TransactionResult.Failure($"Insufficient funds! Need {silverCost} silver and {goldCost} gold.");
-                }
-            
-                player.SilverCoins -= silverCost;
-                player.GoldCoins -= goldCost;
-            
-                string message = $"Spent {silverCost} silver";
-                if (goldCost > 0) message += $" and {goldCost} gold";
-                if (!string.IsNullOrEmpty(reason)) message += $" for {reason}";
-                message += $". Remaining: {player.SilverCoins}S {player.GoldCoins}G";
-            
-                Console.WriteLine($"[ECONOMY] {message}");
-            
-                return TransactionResult.Success(
-                    message: message,
-                    silverSpent: silverCost,
-                    goldSpent: goldCost
-                );
-            }
-        
-            public static bool CanAfford(Player player, int silverCost, int goldCost = 0)
-            {
-                return player.SilverCoins >= silverCost && player.GoldCoins >= goldCost;
-            }
-        }
+
 
 
         public enum TransactionType

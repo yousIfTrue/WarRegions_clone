@@ -9,10 +9,7 @@ namespace WarRegions.Core.Models
         public int GoldCoins { get; set; }
         public List<UnitCard> AvailableUnits { get; set; }
         public UnitDeck CurrentDeck { get; set; }
-        
-        // الخاصية الجديدة الموحدة
         public PlayerProgress Progress { get; set; } = new PlayerProgress();
-        
         // ✅ إضافة طريقة لحساب التقدم
         public double GetPlayerProgressPercentage()
         {
@@ -115,3 +112,4 @@ namespace WarRegions.Core.Models
         }
     }
 }
+

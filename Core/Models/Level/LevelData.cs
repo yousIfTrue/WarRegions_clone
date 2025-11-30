@@ -14,11 +14,13 @@ namespace WarRegions.Core.Models.Level
         public int TurnsLimit { get; set; } = 30;
         // constructor يأخذ 4 معاملات (كما يتوقع LevelManager)
         // أضف هذه الخصائص لتتوافق مع LevelManager
-    public bool IsUnlocked { get; set; } = false;
-    public bool IsCompleted { get; set; } = false;
-    public string LevelId { get; set; } = "level_1";
-    public string Description { get; set; } = "Default level description";
-    
+        public bool IsUnlocked { get; set; } = false;
+        public bool IsCompleted { get; set; } = false;
+        public string LevelId { get; set; } = "level_1";
+        public string Description { get; set; } = "Default level description";
+        public int RecommendedLevel { get; set; } = 1;
+        public List<string> RequiredLevels { get; set; } = new List<string>();
+        public List<string> RequiredAchievements { get; set; } = new List<string>();
             // ✅ إضافة طرق مساعدة
         public bool IsPositionValid(int x, int y)
         {
@@ -77,25 +79,77 @@ namespace WarRegions.Core.Models.Level
     // في وضع التطوير، جميع المستويات مفتوحة
     return DevConfig.DebugMode;
     }
-    public bool IsCompleted(PlayerProgress progress) 
-    {
-       // الاكمال
-        if (progress == null) 
+    
+public bool MeetsRequirements(PlayerProgress progress)
+{
+    if (progress == null) 
         return false;
 
-        // التحقق إذا كان المستوى مذكور في قائمة المستويات المكتملة
-        return progress.CompletedLevels?.Contains(LevelId) == true;
-    }
-    public bool MeetsRequirements(PlayerProgress progress)
+    // 1. تحقق من مستوى اللاعب
+    if (progress.Level < RecommendedLevel)
+        return false;
+
+    // 2. تحقق إذا اكتملت المستويات المطلوبة
+    if (RequiredLevels?.Any() == true)
     {
-        // المتطلبات
-        
+        foreach (var requiredLevel in RequiredLevels)
+        {
+            if (!progress.CompletedLevels?.Contains(requiredLevel) == true)
+                return false;
+        }
     }
-    public Reward CalculateRewards() 
+
+    // 3. تحقق من الإنجازات المطلوبة
+    if (RequiredAchievements?.Any() == true)
     {
-        // المكافئات
-        
+        foreach (var achievement in RequiredAchievements)
+        {
+            if (!progress.Achievements?.Contains(achievement) == true)
+                return false;
+        }
     }
+
+    return true;
+}
+
+public Reward CalculateRewards() 
+{
+    var reward = new Reward
+    {
+        Silver = SilverReward,
+        Gold = GoldReward,
+        Experience = CalculateExperienceReward()
+    };
+
+    // مكافآت إضافية بناءً على الأداء
+    if (HasBonusConditions())
+    {
+        reward.Silver += (int)(SilverReward * 0.3f); // +30%
+        reward.Gold += (int)(GoldReward * 0.2f);     // +20%
+    }
+
+    return reward;
+}
+
+// دوال مساعدة
+private int CalculateExperienceReward()
+{
+    int baseXP = 100;
+    int difficultyMultiplier = AIDifficulty?.ToLower() switch
+    {
+        "easy" => 1,
+        "normal" => 2,
+        "hard" => 3,
+        _ => 1
+    };
+    return baseXP * difficultyMultiplier * RecommendedLevel;
+}
+
+private bool HasBonusConditions()
+{
+    // شروط المكافآت الإضافية (يمكن تطويرها لاحقاً)
+    return false; // مؤقتاً
+}
         
         public class VictoryCondition
         {

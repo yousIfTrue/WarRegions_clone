@@ -1,8 +1,6 @@
 
 // أضف في بداية GameManager.cs (قبل namespace)
 using System.Reflection;
-using WarRegions.Presentation.Interface2D.Scripts;
-using WarRegions.Presentation.Interface3D.Scripts;
 namespace WarRegions.Core.Controllers
 {
     public class GameManager
@@ -57,32 +55,6 @@ namespace WarRegions.Core.Controllers
             }
             
             Console.WriteLine($"[GAME] View mode set to: {newMode}");
-        }
-
-        private IViewManager CreateViewManager2D()
-        {
-            try
-            {
-                return ViewManager2D.Instance;
-            }
-            catch
-            {
-                // Fallback implementation
-                return new SimpleViewManager2D();
-            }
-        }
-
-        private IViewManager CreateViewManager3D()
-        {
-            try
-            {
-                return ViewManager3D.Instance;
-            }
-            catch
-            {
-                // Fallback implementation
-                return new SimpleViewManager3D();
-            }
         }
         
         public void Initialize(ViewMode startMode = ViewMode.View2D)
@@ -404,33 +376,33 @@ namespace WarRegions.Core.Controllers
                 Game Over: {CurrentGame.IsGameOver}
                 """;
         }
-                private IViewManager CreateViewManager2D()
-    {
-        try
+        private IViewManager CreateViewManager2D()
         {
-            // المحاولة الأولى: استخدام Reflection لتحميل ViewManager2D الحقيقي
-            var assembly = Assembly.Load("Presentation");
-            var type = assembly.GetType("WarRegions.Presentation.Interface2D.Scripts.ViewManager2D");
-            if (type != null)
+            try
             {
-                var instanceProperty = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
-                if (instanceProperty != null)
+                // المحاولة الأولى: استخدام Reflection لتحميل ViewManager2D الحقيقي
+                var assembly = Assembly.Load("Presentation");
+               var type = assembly.GetType("WarRegions.Presentation.Interface2D.Scripts.ViewManager2D");
+                if (type != null)
                 {
-                    var realViewManager = (IViewManager)instanceProperty.GetValue(null);
-                    Console.WriteLine("[GAME] Loaded real ViewManager2D from Presentation");
-                    return realViewManager;
+                    var instanceProperty = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
+                    if (instanceProperty != null)
+                    {
+                        var realViewManager = (IViewManager)instanceProperty.GetValue(null);
+                        Console.WriteLine("[GAME] Loaded real ViewManager2D from Presentation");
+                       return realViewManager;
+                    }
                 }
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"[GAME] Failed to load ViewManager2D: {ex.Message}");
-        }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[GAME] Failed to load ViewManager2D: {ex.Message}");
+            }
     
-        // Fallback: استخدام الـ SimpleViewManager إذا فشل التحميل
-        Console.WriteLine("[GAME] Using SimpleViewManager2D as fallback");
-        return new SimpleViewManager2D();
-    }
+            // Fallback: استخدام الـ SimpleViewManager إذا فشل التحميل
+            Console.WriteLine("[GAME] Using SimpleViewManager2D as fallback");
+            return new SimpleViewManager2D();
+        }
 
     private IViewManager CreateViewManager3D()
     {
