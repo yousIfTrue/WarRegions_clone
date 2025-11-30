@@ -378,8 +378,7 @@ namespace WarRegions.Core.Engine
                 return term1 + term2 + term3;
             }
             // أضف في نهاية Transform.cs قبل آخر }
-            namespace WarRegions.Core.Engine
-{
+
     public struct Vector2
     {
         public float x, y;
@@ -413,7 +412,7 @@ namespace WarRegions.Core.Engine
         public float X => x;
         public float Y => y;
     }
-}
+
             public static Quaternion LookRotation(Vector3 forward, Vector3 up)
             {
                 // Very simple implementation to create a quaternion looking along forward with given up
